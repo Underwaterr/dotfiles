@@ -76,6 +76,9 @@ export PATH="$PATH:~/.cargo/bin"
 # Add `.local/bin` to PATH
 export PATH="$PATH:~/.local/bin/"
 
+# Add `~/bin` to PATH
+export PATH="$PATH:~/bin/"
+
 # All good! nyan!
 if [ $TERM = "xterm-kitty" ]; 
   then kitty +kitten icat --align left ~/pop/pics/nyan.png
