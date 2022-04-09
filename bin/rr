@@ -1,0 +1,8 @@
+#!/usr/bin/env bash
+
+#rustc "${1:-main}.rs"
+#./"${1:-main}"
+
+clear
+kitty +kitten icat ~/pop/pics/ferris.png
+cargo run
