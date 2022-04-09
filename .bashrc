@@ -24,6 +24,7 @@ export EDITOR=nvim
 # Aliases
 alias bat='batcat --theme="base16"'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias goodbye='shutdown now'
 alias js='nodemon -q -x "clear;node"'
 alias ls='ls -1 --color --group-directories-first'
@@ -31,7 +32,7 @@ alias lsd='ls --color -d */'
 alias mirror='xrandr --output eDP-1 --output HDMI-1 --output DP-1 --same-as HDMI-1'
 alias moon='curl -s wttr.in?format="%m"; echo;'
 alias open='xdg-open'
-alias v="nvim"
+alias v="nvim $@"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
 alias zoom='firefox https://generalassembly.zoom.us/my/sei.cosmicbinturongs'
 
@@ -80,7 +81,3 @@ if [ $TERM = "xterm-kitty" ];
   then kitty +kitten icat --align left ~/pop/pics/nyan.png
   else echo "Meow 🌈🐱✨";
 fi;
-
-
-# Git Stuff
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
