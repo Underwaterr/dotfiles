@@ -1,0 +1,9 @@
+[init]
+	defaultBranch = main
+[user]
+	name = t
+	email = git@example.com
+[diff]
+	tool = vimdiff
+[credential]
+	helper = store
