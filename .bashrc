@@ -32,6 +32,7 @@ alias lsd='ls --color -d */'
 alias mirror='xrandr --output eDP-1 --output HDMI-1 --output DP-1 --same-as HDMI-1'
 alias moon='curl -s wttr.in?format="%m"; echo;'
 alias open='xdg-open'
+alias ssh="kitty +kitten ssh"
 alias v="nvim $@"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
 alias zoom='firefox https://generalassembly.zoom.us/my/sei.cosmicbinturongs'
