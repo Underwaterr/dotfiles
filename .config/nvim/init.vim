@@ -112,6 +112,7 @@ call plug#begin()
   Plug 'prettier/vim-prettier'
 
   " Python
+  " Plug 'vim-python/python-syntax'
   Plug 'vim-python/python-syntax'
   Plug 'nvie/vim-flake8'
   Plug 'ambv/black'
@@ -141,7 +142,7 @@ call plug#begin()
   " autocomplete
   " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
   " Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-  Plug 'natebosch/vim-lsc'
+  " Plug 'natebosch/vim-lsc'
 
   " File Search
   Plug 'nvim-lua/plenary.nvim'
@@ -179,6 +180,10 @@ call plug#end()
   let g:vim_markdown_auto_insert_bullets = 0
   " Enable ~~strikethrough~~
   let g:vim_markdown_strikethrough = 1
+
+" Python
+  " Fix syntax highlighting
+  let g:python_highlight_all = 1
 
 " Rust
   " Automatically run `rustfmt` on file save
@@ -284,3 +289,4 @@ nmap Kr <Plug>VimspectorRunToCursor
 nmap Ki <Plug>VimspectorBalloonEval
 nmap Kn <Plug>VimspectorStepInto
 nmap Ko <Plug>VimspectorStepOut
+
