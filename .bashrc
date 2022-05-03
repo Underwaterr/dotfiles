@@ -31,6 +31,7 @@ alias js='nodemon -q -x "clear;node"'
 alias ls='ls -1 --color --group-directories-first'
 alias lsd='ls --color -d */'
 alias mirror='xrandr --output eDP-1 --output HDMI-1 --output DP-1 --same-as HDMI-1'
+alias mongosh='mongosh --quiet' # Turn off annoying mongosh warnings
 alias moon='curl -s wttr.in?format="%m"; echo;'
 alias open='xdg-open'
 alias ssh="kitty +kitten ssh"
@@ -72,6 +73,9 @@ set -o vi
 # Don't allow clobbering
 # https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
 set -o noclobber
+
+# Spell checking for `cd` command
+shopt -s cdspell
 
 # Add `nvim` to PATH
 export NVM_DIR="$HOME/.nvm"
