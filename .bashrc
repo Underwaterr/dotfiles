@@ -28,17 +28,15 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias pm="python manage.py $@"
 alias goodbye='shutdown now'
 alias js='nodemon -q -x "clear;node"'
-alias ls='ls -1 --color --group-directories-first'
-alias lsd='ls --color -d */'
+alias ls='ls -1 --color --group-directories-first --literal'
 alias mirror='xrandr --output eDP-1 --output HDMI-1 --output DP-1 --same-as HDMI-1'
 alias mongosh='mongosh --quiet' # Turn off annoying mongosh warnings
 alias moon='curl -s wttr.in?format="%m"; echo;'
-alias open='xdg-open'
+alias open="xdg-open $@"
 alias ssh="kitty +kitten ssh"
-alias tree="tree --dirsfirst"
+alias tree="tree --dirsfirst -I node_modules -I __pycache__"
 alias v="nvim $@"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
-alias zoom='firefox https://generalassembly.zoom.us/my/sei.cosmicbinturongs'
 
 # Clipboard
 alias yank='xclip -selection clipboard'
@@ -51,19 +49,13 @@ alias ....="cd ../../.."
 alias .....="cd ../../../.."
 
 # Config Betterrr
-# Yes those spaces are necessary 😑
 config() {
   if   [ $1 = "bash" ];  then nvim "$HOME/.bashrc";
-  elif [ $1 = "bat" ];   then nvim "$HOME/.config/bat/config";
-  elif [ $1 = "kitty" ]; then nvim "$HOME/.config/kitty/kitty.conf";
+  elif [ $1 = "bat"  ];   then nvim "$HOME/.config/bat/config";
+  elif [ $1 = "kitty"]; then nvim "$HOME/.config/kitty/kitty.conf";
   elif [ $1 = "tmux" ];  then nvim "$HOME/.tmux.conf";
   elif [ $1 = "nvim" ];  then nvim "$HOME/.config/nvim/init.vim";
   else echo "No config for $1 😿"; fi;
-}
-
-# Bat + Git Diff
-batdiff() {
-  git diff --name-only --diff-filter=d | xargs batcat
 }
 
 # Allow vi editing mode!
