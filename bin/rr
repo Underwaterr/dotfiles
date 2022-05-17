@@ -5,4 +5,4 @@
 
 clear
 kitty +kitten icat ~/pop/pics/ferris.png
-cargo run
+cargo run --quiet
