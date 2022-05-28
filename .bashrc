@@ -40,6 +40,9 @@ alias zoom='firefox https://generalassembly.zoom.us/my/sei.cosmicbinturongs'
 alias yank='xclip -selection clipboard'
 alias splat='xclip -selection clipboard -o'
 
+# Fix SSH for Kitty
+alias ssh="kitty +kitten ssh"
+
 # CD Changer
 alias ..="cd .."
 alias ...="cd ../.."
