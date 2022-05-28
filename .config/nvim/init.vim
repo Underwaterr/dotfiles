@@ -36,6 +36,9 @@ highlight LineNr ctermfg=8
 " Turn on & off line numbers with Ctrl+n
 nnoremap <C-n> :set relativenumber!<CR>
 
+" This feature was less useful than annoying
+nnoremap q: <Nop>
+
 " Nicer Split Bar
 "set fillchars-=vert:\| | set fillchars+=vert:\ 
 "autocmd colorscheme * highlight VertSplit cterm=NONE ctermfg=Green ctermbg=black
@@ -141,12 +144,12 @@ call plug#begin()
   " autocomplete
   " Plug 'ms-jpq/coq_nvim', {'branch': 'coq'}
   " Plug 'ms-jpq/coq.artifacts', {'branch': 'artifacts'}
-  Plug 'natebosch/vim-lsc'
+  " Plug 'natebosch/vim-lsc'
 
   " File Search
   Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  "Plug 'nvim-telescope/telescope.nvim'
+  "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
   " Debugging
   Plug 'puremourning/vimspector'
@@ -179,6 +182,10 @@ call plug#end()
   let g:vim_markdown_auto_insert_bullets = 0
   " Enable ~~strikethrough~~
   let g:vim_markdown_strikethrough = 1
+
+" Python
+  " Fix syntax highlighting
+  let g:python_highlight_all = 1
 
 " Rust
   " Automatically run `rustfmt` on file save
@@ -261,7 +268,7 @@ highlight Pmenu ctermbg=black
 highlight Pmenu ctermfg=white
 
 " Finally getting around to the leader key
-let g:mapleader=' '
+let g:mapleader=';'
 nnoremap <Leader>a :echo 'Vim says hello!'<CR>
 
 " change highlighting for code fold
@@ -284,3 +291,6 @@ nmap Kr <Plug>VimspectorRunToCursor
 nmap Ki <Plug>VimspectorBalloonEval
 nmap Kn <Plug>VimspectorStepInto
 nmap Ko <Plug>VimspectorStepOut
+
+command! VisualBlockMode normal! <C-v>
+
