@@ -44,6 +44,9 @@ alias weather='curl -s wttr.in/Austin?u | head -n 17'
 alias yank='xclip -selection clipboard'
 alias splat='xclip -selection clipboard -o'
 
+# Fix SSH for Kitty
+alias ssh="kitty +kitten ssh"
+
 # CD Changer
 alias ..="cd .."
 alias ...="cd ../.."
