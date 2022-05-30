@@ -37,6 +37,7 @@ alias open="xdg-open $@"
 alias ssh="kitty +kitten ssh"
 alias tree="tree --dirsfirst -I node_modules -I __pycache__"
 alias v="nvim $@"
+alias mv="mv -vi $@" # ask before overwriting a file!
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
 
 # Clipboard
