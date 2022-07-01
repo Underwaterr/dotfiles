@@ -92,9 +92,9 @@ export PATH="$PATH:~/.local/bin/"
 export PATH="$PATH:~/bin/"
 
 # For `virtualenvwrapper`
-export WORKON_HOME='~/.python-virtual-environments'
-export PROJECT_HOME='~/code/python'
-source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME='~/.python-virtual-environments'
+#export PROJECT_HOME='~/code/python'
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # All good! nyan!
 if [ $TERM = "xterm-kitty" ]; 
