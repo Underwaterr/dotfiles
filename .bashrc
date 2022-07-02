@@ -26,6 +26,7 @@ alias :q="exit" # teehee
 alias bat='batcat --theme="base16"'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias filesize='du -B G -d 1'
 alias goodbye='echo "goodbye!"; shutdown now'
 alias js='nodemon -q -x "clear;node"'
 alias ls='ls -1 --color --group-directories-first --literal'
