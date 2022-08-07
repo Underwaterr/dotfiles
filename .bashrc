@@ -33,12 +33,12 @@ alias ls='ls -1 --color --group-directories-first --literal'
 alias mirror='xrandr --output eDP-1 --output HDMI-1 --output DP-1 --same-as HDMI-1'
 alias mongosh='mongosh --quiet' # Turn off annoying mongosh warnings
 alias moon='curl -s wttr.in?format="%m"; echo;'
-alias mv="mv -vi $@" # ask before overwriting a file!
-alias open="xdg-open $@"
-alias pm="python manage.py $@"
+alias mv="mv -vi" # ask before overwriting a file!
+alias open="xdg-open"
+alias pm="python manage.py"
 alias ssh="kitty +kitten ssh"
 alias tree="tree --dirsfirst -I node_modules -I __pycache__"
-alias v="nvim $@"
+alias v="nvim"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
 
 # Clipboard
