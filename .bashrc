@@ -35,11 +35,18 @@ alias mongosh='mongosh --quiet' # Turn off annoying mongosh warnings
 alias moon='curl -s wttr.in?format="%m"; echo;'
 alias mv="mv -vi" # ask before overwriting a file!
 alias open="xdg-open"
+alias please="sudo"
 alias pm="python manage.py"
 alias ssh="kitty +kitten ssh"
 alias tree="tree --dirsfirst -I node_modules -I __pycache__"
 alias v="nvim"
+alias vpn="protonvpn-cli c"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
+
+ros() {
+  source /opt/ros/noetic/setup.bash
+  export PS1="$PS1🛸 "
+}
 
 # Clipboard
 alias yank='xclip -selection clipboard'
@@ -61,6 +68,7 @@ config() {
   elif [ $1 = "kitty" ];  then nvim "$HOME/.config/kitty/kitty.conf";
   elif [ $1 = "tmux"  ];  then nvim "$HOME/.tmux.conf";
   elif [ $1 = "nvim"  ];  then nvim "$HOME/.config/nvim/init.vim";
+  elif [ $1 = "vim"   ];  then nvim "$HOME/.config/nvim/init.vim";
   else echo "No config for $1 😿"; fi;
 }
 
@@ -99,6 +107,7 @@ export PATH="$PATH:~/bin/"
 
 # All good! nyan!
 if [ $TERM = "xterm-kitty" ]; 
-  then kitty +kitten icat --align left ~/pop/pics/nyan.png
+  then kitty +kitten icat --align left ~/ubuntu/Pictures/nyan.png
   else echo "Meow 🌈🐱✨";
 fi;
+. "$HOME/.cargo/env"
