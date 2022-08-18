@@ -37,10 +37,12 @@ alias mv="mv -vi" # ask before overwriting a file!
 alias open="xdg-open"
 alias please="sudo"
 alias pm="python manage.py"
+alias server="python3 -m http.server"
 alias ssh="kitty +kitten ssh"
 alias tree="tree --dirsfirst -I node_modules -I __pycache__"
 alias v="nvim"
-alias vpn="protonvpn-cli c"
+alias vpn="protonvpn-cli connect --p2p"
+alias novpn="protonvpn-cli disconnect"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
 
 ros() {
