@@ -32,15 +32,13 @@ alias js='nodemon -q -x "clear;node"'
 alias l='ls -1 --color --group-directories-first --literal'
 alias la='ls -a -1 --color --group-directories-first --literal'
 alias ls='ls -1 --color --group-directories-first --literal'
-alias mirror='xrandr --output eDP-1 --output HDMI-1 --output DP-1 --same-as HDMI-1'
-alias mongosh='mongosh --quiet' # Turn off annoying mongosh warnings
 alias moon='curl -s wttr.in?format="%m"; echo;'
 alias mv="mv -vi" # ask before overwriting a file!
 alias open="xdg-open"
 alias please="sudo"
 alias pm="python manage.py"
 alias server="python3 -m http.server"
-alias ssh="kitty +kitten ssh"
+alias ssh="kitty +kitten ssh" # Fix SSH for Kitty
 alias tree="tree --dirsfirst -I node_modules -I __pycache__"
 alias v="nvim"
 alias vv="view -M"
@@ -48,17 +46,9 @@ alias vpn="protonvpn-cli connect --p2p"
 alias novpn="protonvpn-cli disconnect"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
 
-ros() {
-  source /opt/ros/noetic/setup.bash
-  export PS1="$PS1🛸 "
-}
-
 # Clipboard
 alias yank='xclip -selection clipboard'
 alias splat='xclip -selection clipboard -o'
-
-# Fix SSH for Kitty
-alias ssh="kitty +kitten ssh"
 
 # CD Changer
 alias ..="cd .."
@@ -99,6 +89,9 @@ export NVM_DIR="$HOME/.nvm"
 # Add Rust to PATH
 export PATH="$PATH:~/.cargo/bin"
 
+# Something else with Rust
+. "$HOME/.cargo/env"
+
 # Add `.local/bin` to PATH
 export PATH="$PATH:~/.local/bin/"
 
@@ -115,4 +108,3 @@ if [ $TERM = "xterm-kitty" ];
   then kitty +kitten icat --align left ~/ubuntu/Pictures/nyan.png
   else echo "Meow 🌈🐱✨";
 fi;
-. "$HOME/.cargo/env"
