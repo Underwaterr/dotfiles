@@ -101,6 +101,9 @@ nmap sF :Telescope<CR>
 " Remember to run :PlugInstall 😇
 let g:plug_window = 'enew' " https://github.com/junegunn/vim-plug/issues/651
 
+nnoremap <C-o> o0<C-D>
+nnoremap <C-O> O0<C-D>
+
 call plug#begin()
 
   " NERD Tree
@@ -160,6 +163,9 @@ call plug#begin()
 
   " Debugging
   Plug 'puremourning/vimspector'
+
+  " Floaterm (Floating Terminal Window)
+  Plug 'voldikss/vim-floaterm'
 
 call plug#end()
 
@@ -300,4 +306,11 @@ nmap Kn <Plug>VimspectorStepInto
 nmap Ko <Plug>VimspectorStepOut
 
 command! VisualBlockMode normal! <C-v>
+
+" Floating Terminal (Floaterm)
+nmap S :FloatermNew<CR>
+let g:floaterm_title = '$1/$2'
+let g:floaterm_width = 0.8
+let g:floaterm_position = 'bottom'
+let g:floaterm_borderchars=["═", "║", "═", "║", "╔", "╗", "╝", "╚"]
 
