@@ -29,6 +29,8 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
 alias filesize='du -B G -d 1'
 alias goodbye='echo "goodbye!"; shutdown now'
 alias js='nodemon -q -x "clear;node"'
+alias l='ls -1 --color --group-directories-first --literal'
+alias la='ls -a -1 --color --group-directories-first --literal'
 alias ls='ls -1 --color --group-directories-first --literal'
 alias mirror='xrandr --output eDP-1 --output HDMI-1 --output DP-1 --same-as HDMI-1'
 alias mongosh='mongosh --quiet' # Turn off annoying mongosh warnings
@@ -41,6 +43,7 @@ alias server="python3 -m http.server"
 alias ssh="kitty +kitten ssh"
 alias tree="tree --dirsfirst -I node_modules -I __pycache__"
 alias v="nvim"
+alias vv="view -M"
 alias vpn="protonvpn-cli connect --p2p"
 alias novpn="protonvpn-cli disconnect"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
