@@ -4,6 +4,6 @@
 #./"${1:-main}"
 
 clear
-kitty +kitten icat ~/pop/pics/clippy.png
+kitty +kitten icat ~/ubuntu/Pictures/clippy.png
 cargo clippy
 echo ""
