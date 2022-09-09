@@ -1,3 +1,9 @@
+# If not running interactively, don't do anything
+case $- in
+    *i*) ;;
+    *) return;;
+esac
+
 # 🌙
 # export MOON=$(curl -s wttr.in?format="%m")
 
