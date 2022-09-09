@@ -7,12 +7,3 @@ set vi-cmd-mode-string "⭐"
 
 # ignore case when doing tab completion
 set completion-ignore-case on
-
-# something about completion in the middle of a command?
-set skip-completed-text on
-
-# tab once to show possible options
-set show-all-if-ambiguous on
-set show-all-if-unmodified on
-
-

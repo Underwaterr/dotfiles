@@ -32,26 +32,29 @@ alias :q="exit" # teehee
 alias bat='batcat --theme="base16"'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias filesize='du -B G -d 1'
 alias goodbye='echo "goodbye!"; shutdown now'
 alias js='nodemon -q -x "clear;node"'
+alias l='ls -1 --color --group-directories-first --literal'
+alias la='ls -a -1 --color --group-directories-first --literal'
 alias ls='ls -1 --color --group-directories-first --literal'
-alias mirror='xrandr --output eDP-1 --output HDMI-1 --output DP-1 --same-as HDMI-1'
-alias mongosh='mongosh --quiet' # Turn off annoying mongosh warnings
 alias moon='curl -s wttr.in?format="%m"; echo;'
-alias mv="mv -vi $@" # ask before overwriting a file!
-alias open="xdg-open $@"
-alias pm="python manage.py $@"
-alias ssh="kitty +kitten ssh"
+alias mv="mv -vi" # ask before overwriting a file!
+alias open="xdg-open"
+alias please="sudo"
+alias pm="python manage.py"
+alias server="python3 -m http.server"
+alias ssh="kitty +kitten ssh" # Fix SSH for Kitty
 alias tree="tree --dirsfirst -I node_modules -I __pycache__"
-alias v="nvim $@"
+alias v="nvim"
+alias vv="view -M"
+alias vpn="protonvpn-cli connect --p2p"
+alias novpn="protonvpn-cli disconnect"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
 
 # Clipboard
 alias yank='xclip -selection clipboard'
 alias splat='xclip -selection clipboard -o'
-
-# Fix SSH for Kitty
-alias ssh="kitty +kitten ssh"
 
 # CD Changer
 alias ..="cd .."
@@ -66,6 +69,7 @@ config() {
   elif [ $1 = "kitty" ];  then nvim "$HOME/.config/kitty/kitty.conf";
   elif [ $1 = "tmux"  ];  then nvim "$HOME/.tmux.conf";
   elif [ $1 = "nvim"  ];  then nvim "$HOME/.config/nvim/init.vim";
+  elif [ $1 = "vim"   ];  then nvim "$HOME/.config/nvim/init.vim";
   else echo "No config for $1 😿"; fi;
 }
 
@@ -91,6 +95,9 @@ export NVM_DIR="$HOME/.nvm"
 # Add Rust to PATH
 export PATH="$PATH:~/.cargo/bin"
 
+# Something else with Rust
+. "$HOME/.cargo/env"
+
 # Add `.local/bin` to PATH
 export PATH="$PATH:~/.local/bin/"
 
@@ -98,12 +105,12 @@ export PATH="$PATH:~/.local/bin/"
 export PATH="$PATH:~/bin/"
 
 # For `virtualenvwrapper`
-export WORKON_HOME='~/.python-virtual-environments'
-export PROJECT_HOME='~/code/python'
-source /usr/local/bin/virtualenvwrapper.sh
+#export WORKON_HOME='~/.python-virtual-environments'
+#export PROJECT_HOME='~/code/python'
+#source /usr/local/bin/virtualenvwrapper.sh
 
 # All good! nyan!
 if [ $TERM = "xterm-kitty" ]; 
-  then kitty +kitten icat --align left ~/pop/pics/nyan.png
+  then kitty +kitten icat --align left ~/ubuntu/Pictures/nyan.png
   else echo "Meow 🌈🐱✨";
 fi;
