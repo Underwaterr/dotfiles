@@ -112,6 +112,10 @@ call plug#begin()
   " Dev Iconz for NERD Tree
   Plug 'ryanoasis/vim-devicons'
 
+
+  " C++
+  Plug 'octol/vim-cpp-enhanced-highlight'
+
   " HTML5
   Plug 'othree/html5.vim'
 
