@@ -15,7 +15,7 @@ export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
 
 # Use GitHub's fancy 'hub' instead of 'git'
-eval "$(hub alias -s)"
+# eval "$(hub alias -s)"
 
 # Use nVim for Git (and more!)
 export VISUAL=nvim
@@ -31,12 +31,14 @@ alias goodbye='echo "goodbye!"; shutdown now'
 alias js='nodemon -q -x "clear;node"'
 alias l='ls -1 --color --group-directories-first --literal'
 alias la='ls -a -1 --color --group-directories-first --literal'
-alias ls='ls -1 --color --group-directories-first --literal'
+alias ls='ls -1 --color --group-directories-first --literal' # --hyperlink=auto
 alias moon='curl -s wttr.in?format="%m"; echo;'
 alias mv="mv -vi" # ask before overwriting a file!
 alias open="xdg-open"
-alias please="sudo"
+alias please="sudo apt"
 alias pm="python manage.py"
+#alias reset-audio="systemctl --user restart pulseaduio && sudo alsa force-reload"
+alias reset-audio="pulseaudio -k"
 alias server="python3 -m http.server"
 alias ssh="kitty +kitten ssh" # Fix SSH for Kitty
 alias tree="tree --dirsfirst -I node_modules -I __pycache__"
@@ -108,3 +110,4 @@ if [ $TERM = "xterm-kitty" ];
   then kitty +kitten icat --align left ~/ubuntu/Pictures/nyan.png
   else echo "Meow 🌈🐱✨";
 fi;
+source /home/t/drone/ardupilot/Tools/completion/completion.bash
