@@ -318,3 +318,6 @@ let g:floaterm_width = 0.8
 let g:floaterm_position = 'bottom'
 let g:floaterm_borderchars=["═", "║", "═", "║", "╔", "╗", "╝", "╚"]
 
+" Fancy TXT stuff
+autocmd Filetype text setlocal textwidth=60 colorcolumn=61 wrap
+autocmd Filetype text highlight ColorColumn ctermbg=0
