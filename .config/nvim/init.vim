@@ -321,3 +321,27 @@ let g:floaterm_borderchars=["═", "║", "═", "║", "╔", "╗", "╝", "�
 " Fancy TXT stuff
 autocmd Filetype text setlocal textwidth=60 colorcolumn=61 wrap
 autocmd Filetype text highlight ColorColumn ctermbg=0
+
+
+" vim -b : edit binary using xxd-format!
+augroup Binary
+  au!
+  au BufReadPre  *.bin let &bin=1
+  au BufReadPost *.bin if &bin | %!xxd
+  au BufReadPost *.bin set ft=xxd | endif
+  au BufWritePre *.bin if &bin | %!xxd -r
+  au BufWritePre *.bin endif
+  au BufWritePost *.bin if &bin | %!xxd
+  au BufWritePost *.bin set nomod | endif
+augroup END
+
+augroup Tegra
+  au!
+  au BufReadPre  *.tga let &bin=1
+  au BufReadPost *.tga if &bin | %!xxd
+  au BufReadPost *.tga set ft=xxd | endif
+  au BufWritePre *.tga if &bin | %!xxd -r
+  au BufWritePre *.tga endif
+  au BufWritePost *.tga if &bin | %!xxd
+  au BufWritePost *.tga set nomod | endif
+augroup END
