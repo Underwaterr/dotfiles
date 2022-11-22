@@ -47,7 +47,7 @@ nnoremap <C-n> :set relativenumber!<CR>
 nnoremap q: <Nop>
 
 " Nicer Split Bar
-"set fillchars-=vert:\| | set fillchars+=vert:\ 
+"set fillchars-=vert:\| | set fillchars+=vert:\
 "autocmd colorscheme * highlight VertSplit cterm=NONE ctermfg=Green ctermbg=black
 
 " Dim 'end of buffer' tildes
@@ -68,7 +68,7 @@ cabbrev help tab help
 
 " code folding!
 " don't show dots on code fold line
-set fillchars=fold:\ 
+set fillchars=fold:\
 " toggle folds with zz
 nnoremap zz za
 " turn on code folding
@@ -177,7 +177,7 @@ call plug#end()
   syntax enable
   filetype plugin indent on
 
-  " Less uggo highlight warning 
+  " Less uggo highlight warning
   hi QuickFixLine ctermbg=234
 
 " JavaScript
@@ -224,11 +224,11 @@ call plug#end()
   let g:lightline.component = {
     \ 'hex': '0x%-02B',
     \ 'hexline': '0x%04-2O' }
-  let g:lightline.active = { 
+  let g:lightline.active = {
     \ 'left': [
       \ ['mode', 'paste'],
       \ ['readonly', 'filename', 'modified'] ],
-    \ 'right': [ 
+    \ 'right': [
       \ ['fileformat', 'fileencoding', 'hex', 'filetype'] ] }
   let g:lightline.mode_map = {
     \ 'n' : '🌙',
@@ -266,10 +266,6 @@ let NERDTreeMapPreview = 'p'
 " Use <Esc> to escape terminal mode
 tnoremap <Esc> <C-\><C-n>
 
-" Create a custom 'Configure' command
-command! Config e ~/.config/nvim/init.vim
-command! ConfigLoad source ~/.config/nvim/init.vim
-
 " Copy file to clipboard
 command! Yank !cat % | xclip -selection clipboard
 
@@ -286,7 +282,7 @@ highlight Pmenu ctermfg=white
 
 " Finally getting around to the leader key
 let g:mapleader=';'
-nnoremap <Leader>a :echo 'Vim says hello!'<CR>
+nnoremap <Leader>; :echo 'Vim says hello!'<CR>
 
 " change highlighting for code fold
 highlight Folded ctermbg=black
@@ -309,7 +305,11 @@ nmap Ki <Plug>VimspectorBalloonEval
 nmap Kn <Plug>VimspectorStepInto
 nmap Ko <Plug>VimspectorStepOut
 
+" Enter Visual Block Mode cuz 'C-v' is used for 'paste'
 command! VisualBlockMode normal! <C-v>
+
+" trim whitespace at the end of a line
+command! TrimWhitespace :%s/\s\+$//e
 
 " Floating Terminal (Floaterm)
 nmap S :FloatermNew<CR>
@@ -345,3 +345,7 @@ augroup Tegra
   au BufWritePost *.tga if &bin | %!xxd
   au BufWritePost *.tga set nomod | endif
 augroup END
+
+
+" vimwiki
+let g:vimwiki_list = [{'path': '~/wiki/'}]
