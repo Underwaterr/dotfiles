@@ -8,7 +8,6 @@ esac
 # export MOON=$(curl -s wttr.in?format="%m")
 
 # Cursor
-
 PS1_RESET='\033[0m'
 PS1_BG='\033[47m'
 PS1_FG='\033[0;30m'
@@ -49,10 +48,11 @@ alias server="python3 -m http.server $1"
 alias ssh="kitty +kitten ssh" # Fix SSH for Kitty
 alias tree="tree --dirsfirst -I node_modules -I __pycache__"
 alias v="nvim"
-alias vv="view -M"
+alias vv="view -M" # view read-only in vim
 alias vpn="protonvpn-cli connect --p2p"
 alias novpn="protonvpn-cli disconnect"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
+alias wiki="vim -c ':VimwikiIndex'"
 
 # Clipboard
 alias yank='xclip -selection clipboard'
@@ -63,6 +63,13 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
+
+# Lazy with Git
+lazy() {
+  git add -A
+  git commit -a --allow-empty-message -m ''
+  git push
+}
 
 # Config Betterrr
 config() {
@@ -106,14 +113,14 @@ export PATH="$PATH:~/.local/bin/"
 # Add `~/bin` to PATH
 export PATH="$PATH:~/bin/"
 
-# For `virtualenvwrapper`
-#export WORKON_HOME='~/.python-virtual-environments'
-#export PROJECT_HOME='~/code/python'
-#source /usr/local/bin/virtualenvwrapper.sh
+# ardupilot is gonna ardupilot
+if command -v ardupilot &> /dev/null
+then
+  source /home/t/drone/ardupilot/Tools/completion/completion.bash
+fi
 
 # All good! nyan!
 if [ $TERM = "xterm-kitty" ]; 
   then kitty +kitten icat --align left ~/ubuntu/Pictures/nyan.png
   else echo "Meow 🌈🐱✨";
 fi;
-source /home/t/drone/ardupilot/Tools/completion/completion.bash
