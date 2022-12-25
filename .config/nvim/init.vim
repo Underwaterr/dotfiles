@@ -1,3 +1,5 @@
+" use `=` to set indentation of a selection!
+
 " Install Vim Plug if it's not there already!
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -170,6 +172,9 @@ call plug#begin()
 
   " Floaterm (Floating Terminal Window)
   Plug 'voldikss/vim-floaterm'
+
+  " Goyo (for focused writing
+  Plug 'junegunn/goyo.vim'
 
 call plug#end()
 
@@ -349,3 +354,5 @@ augroup END
 
 " vimwiki
 let g:vimwiki_list = [{'path': '~/wiki/'}]
+autocmd FileType vimwiki nnoremap <buffer>  j gj
+autocmd FileType vimwiki nnoremap <buffer> k gk
