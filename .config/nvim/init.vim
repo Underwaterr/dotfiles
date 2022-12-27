@@ -176,6 +176,9 @@ call plug#begin()
   " Goyo (for focused writing
   Plug 'junegunn/goyo.vim'
 
+  " Calendar b/c why not let's go crazy
+  Plug 'itchyny/calendar.vim'
+
 call plug#end()
 
   " hmm
@@ -353,6 +356,19 @@ augroup END
 
 
 " vimwiki
-let g:vimwiki_list = [{'path': '~/wiki/'}]
 autocmd FileType vimwiki nnoremap <buffer>  j gj
 autocmd FileType vimwiki nnoremap <buffer> k gk
+let philly_wiki = {}
+let philly_wiki.path = '~/wikis/philly/'
+let book_wiki = {}
+let book_wiki.path = '~/wikis/book/'
+let g:vimwiki_list = [philly_wiki, book_wiki]
+
+" Get the wordcount!
+command! WordCount !wc %
+
+" Tablin'
+function! Table()
+  :normal i╔══╦══╗\n║  ║  ║<CR>╠══╬══╣<CR>║  ║  ║<CR>╚══╩══╝<ESC>
+endfunction
+command! Table :call Table()
