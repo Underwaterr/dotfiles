@@ -83,6 +83,7 @@ set foldlevelstart=99
 set splitright
 set splitbelow
 nmap ss :vnew <CR>
+nmap sS :lefta vnew <CR>
 nmap sv :new <CR>
 nmap st :tabnew <CR>
 map sh <C-w>h
@@ -177,7 +178,8 @@ call plug#begin()
   Plug 'junegunn/goyo.vim'
 
   " Calendar b/c why not let's go crazy
-  Plug 'itchyny/calendar.vim'
+  " Plug 'itchyny/calendar.vim'
+  Plug 'mattn/calendar-vim'
 
 call plug#end()
 
