@@ -53,6 +53,8 @@ alias vpn="protonvpn-cli connect --p2p"
 alias novpn="protonvpn-cli disconnect"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
 alias wiki="vim -c ':VimwikiIndex'"
+alias book="vim -c ':VimwikiIndex 2'"
+alias diary="vim -c ':VimwikiMakeDiaryNote 2'"
 
 # Clipboard
 alias yank='xclip -selection clipboard'
