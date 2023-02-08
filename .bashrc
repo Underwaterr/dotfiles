@@ -28,6 +28,7 @@ export EDITOR=nvim
 
 # Aliases
 alias :q="exit" # teehee
+alias anki='anki > /dev/null &'
 alias bat='batcat --theme="base16"'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
@@ -52,9 +53,12 @@ alias vv="view -M" # view read-only in vim
 alias vpn="protonvpn-cli connect --p2p"
 alias novpn="protonvpn-cli disconnect"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
-alias wiki="vim -c ':VimwikiIndex'"
 alias book="vim -c ':VimwikiIndex 2'"
 alias diary="vim -c ':VimwikiMakeDiaryNote 2'"
+
+wiki() {
+  vim -c :VimwikiIndex"$1" 
+}
 
 # Clipboard
 alias yank='xclip -selection clipboard'
@@ -98,6 +102,10 @@ shopt -s cdspell
 # Extended Globbing operators
 shopt -s extglob
 
+# automatically go to directory without `cd`!
+# surprise, turns out this causes HARD TO FIND BUGS!
+#shopt -s autocd
+
 # Add `nvim` to PATH
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -126,3 +134,24 @@ if [ $TERM = "xterm-kitty" ];
   then kitty +kitten icat --align left ~/ubuntu/Pictures/nyan.png
   else echo "Meow 🌈🐱✨";
 fi;
+
+
+# danger zonnne
+command1()
+{
+    if [ "$BASH_COMMAND" != command2 ]
+    then
+        command_flag=1
+    fi
+    return 0
+}
+trap command1 debug
+command2()
+{
+    if [ ! "$command_flag" ]
+    then
+        ls
+    fi
+    command_flag=
+}
+PROMPT_COMMAND=command2
