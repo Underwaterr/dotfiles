@@ -69,6 +69,8 @@ vpn() {
     protonvpn-cli disconnect
   elif [[ $1 == 'connect' ]]; then
     protonvpn-cli connect --p2p
+  elif [[ $1 == 'status' ]]; then
+    protonvpn-cli status
   else
     protonvpn-cli connect --p2p
   fi
