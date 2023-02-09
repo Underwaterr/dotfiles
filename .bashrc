@@ -55,6 +55,11 @@ alias book="vim -c ':VimwikiIndex 2'"
 alias diary="vim -c ':VimwikiMakeDiaryNote 2'"
 
 vpn() {
+  if ! command -v protonvpn-cli &> /dev/null; then
+    echo 'Proton VPN is not installed!'
+    exit
+  fi
+
   if [[ $1 == 'login' ]]; then
     read -p "Enter your Proton VPN email: " EMAIL
     protonvpn-cli login $EMAIL
