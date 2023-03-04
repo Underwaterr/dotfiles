@@ -50,14 +50,35 @@ alias ssh="kitty +kitten ssh" # Fix SSH for Kitty
 alias tree="tree --dirsfirst -I node_modules -I __pycache__"
 alias v="nvim"
 alias vv="view -M" # view read-only in vim
-alias vpn="protonvpn-cli connect --p2p"
-alias novpn="protonvpn-cli disconnect"
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
+alias book="vim -c ':VimwikiIndex 2'"
+alias diary="vim -c ':VimwikiMakeDiaryNote 2'"
+
+vpn() {
+  if ! command -v protonvpn-cli &> /dev/null; then
+    echo 'Proton VPN is not installed!'
+    exit
+  fi
+
+  if [[ $1 == 'login' ]]; then
+    read -p "Enter your Proton VPN email: " EMAIL
+    protonvpn-cli login $EMAIL
+  elif [[ $1 == 'logout' ]]; then
+    protonvpn-cli logout
+  elif [[ $1 == 'disconnect' ]]; then
+    protonvpn-cli disconnect
+  elif [[ $1 == 'connect' ]]; then
+    protonvpn-cli connect --p2p
+  elif [[ $1 == 'status' ]]; then
+    protonvpn-cli status
+  else
+    protonvpn-cli connect --p2p
+  fi
+}
 
 wiki() {
   vim -c :VimwikiIndex"$1" 
 }
-
 
 # Clipboard
 alias yank='xclip -selection clipboard'
@@ -101,9 +122,6 @@ set -o vi
 # Don't allow clobbering
 # https://www.gnu.org/software/bash/manual/html_node/The-Set-Builtin.html
 set -o noclobber
-
-# Spell checking for `cd` command
-shopt -s cdspell
 
 # Extended Globbing operators
 shopt -s extglob
