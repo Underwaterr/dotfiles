@@ -72,6 +72,13 @@ alias .....="cd ../../../.."
 # Lazy with Git
 lazy() {
   git add -A
+  git status
+  read -p "Push and commit? (y/n)" -n 1 -r
+  echo
+  if [[ ! $REPLY =~ ^[Yy]$ ]]
+  then
+      [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
+  fi
   git commit -a --allow-empty-message -m ''
   git push
 }
