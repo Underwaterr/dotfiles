@@ -29,6 +29,7 @@ set wrap
 set linebreak
 set nolist
 set breakindent
+set whichwrap+=<,>,h,l
 
 " Tabs
 set autoindent
@@ -174,7 +175,7 @@ call plug#begin()
   " Floaterm (Floating Terminal Window)
   Plug 'voldikss/vim-floaterm'
 
-  " Goyo (for focused writing
+  " Goyo (for focused writing)
   Plug 'junegunn/goyo.vim'
 
   " Calendar b/c why not let's go crazy
@@ -276,9 +277,6 @@ let NERDTreeMapPreview = 'p'
 " Use <Esc> to escape terminal mode
 tnoremap <Esc> <C-\><C-n>
 
-" Copy file to clipboard
-command! Yank !cat % | xclip -selection clipboard
-
 " change highlighting for vimdiff
 " from https://stackoverflow.com/a/17183382
 highlight DiffAdd    ctermbg=8
@@ -332,7 +330,6 @@ let g:floaterm_borderchars=["═", "║", "═", "║", "╔", "╗", "╝", "�
 autocmd Filetype text setlocal textwidth=60 colorcolumn=61 wrap
 autocmd Filetype text highlight ColorColumn ctermbg=0
 
-
 " vim -b : edit binary using xxd-format!
 augroup Binary
   au!
@@ -358,8 +355,14 @@ augroup END
 
 
 " vimwiki
-autocmd FileType vimwiki nnoremap <buffer>  j gj
+autocmd FileType vimwiki nnoremap <buffer> j gj
 autocmd FileType vimwiki nnoremap <buffer> k gk
+autocmd FileType vimwiki setlocal noexpandtab tabstop=4 shiftwidth=4 listchars=tab:\ \ 
+autocmd FileType vimwiki setlocal nobreakindent noautoindent textwidth=0
+autocmd FileType vimwiki Goyo 45x100%
+autocmd FileType vimwiki cnoreabbrev q qa
+autocmd FileType vimwiki cnoreabbrev center center 45
+let g:vimwiki_global_ext = 0
 let philly_wiki = {}
 let philly_wiki.path = '~/wikis/philly/'
 let book_wiki = {}
@@ -369,8 +372,6 @@ let g:vimwiki_list = [philly_wiki, book_wiki]
 " Get the wordcount!
 command! WordCount !wc %
 
-" Tablin'
-function! Table()
-  :normal i╔══╦══╗\n║  ║  ║<CR>╠══╬══╣<CR>║  ║  ║<CR>╚══╩══╝<ESC>
-endfunction
-command! Table :call Table()
+" Copy buffer to clipboard
+" previously used `cat` instead of `:w !tee`, which read from saved file, not buffer
+command! Yank :w !tee | xclip -selection clipboard & echo "Copied buffer to clipboard"
