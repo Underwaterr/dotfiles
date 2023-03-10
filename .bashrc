@@ -94,7 +94,7 @@ alias .....="cd ../../../.."
 lazy() {
   git add -A
   git status
-  read -p "Push and commit? (y/n)" -n 1 -r
+  read -p "Commit and push? (y/n)" -n 1 -r
   echo
   if [[ ! $REPLY =~ ^[Yy]$ ]]
   then
@@ -161,6 +161,7 @@ fi;
 
 
 # danger zonnne
+# in theory, <CR> will do `ls`
 command1()
 {
     if [ "$BASH_COMMAND" != command2 ]
