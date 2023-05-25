@@ -13,7 +13,7 @@ PS1_BG='\033[47m'
 PS1_FG='\033[0;30m'
 TRIANGLE_SYMBOL=$'\uE0B0'
 #export PS1="$PS1_FG$PS1_BG\w$PS1_RESET$TRIANGLE_SYMBOL "
-export PS1=" \[\e[32m\]\w\[\e[m\] "
+export PS1="🦉🏠 \[\e[32m\]\w\[\e[m\] "
 
 # Fun colors
 export CLICOLOR=1
@@ -72,7 +72,8 @@ vpn() {
   elif [[ $1 == 'status' ]]; then
     protonvpn-cli status
   else
-    protonvpn-cli connect --p2p
+    echo "🤖 Welcome to Tyler's VPN command!"
+    echo -e 'You have the following options: \n\tlogin\n\tlogout\n\tconnect\n\tdisconnect\n\tstatus'
   fi
 }
 
@@ -89,20 +90,6 @@ alias ..="cd .."
 alias ...="cd ../.."
 alias ....="cd ../../.."
 alias .....="cd ../../../.."
-
-# Lazy with Git
-lazy() {
-  git add -A
-  git status
-  read -p "Commit and push? (y/n)" -n 1 -r
-  echo
-  if [[ ! $REPLY =~ ^[Yy]$ ]]
-  then
-      [[ "$0" = "$BASH_SOURCE" ]] && exit 1 || return 1
-  fi
-  git commit -a --allow-empty-message -m ''
-  git push
-}
 
 # Config Betterrr
 config() {
@@ -180,3 +167,6 @@ command2()
     command_flag=
 }
 PROMPT_COMMAND=command2
+
+# custom SUDO prompt
+export SUDO_PROMPT="sudo incantation: "
