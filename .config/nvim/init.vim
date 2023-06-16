@@ -113,8 +113,6 @@ call plug#begin()
   " NERD Tree
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
-  " Dev Iconz for NERD Tree
-  Plug 'ryanoasis/vim-devicons'
 
 
   " C++
@@ -181,6 +179,9 @@ call plug#begin()
   " Calendar b/c why not let's go crazy
   " Plug 'itchyny/calendar.vim'
   Plug 'mattn/calendar-vim'
+
+  " Dev Iconz for NERD Tree
+  Plug 'ryanoasis/vim-devicons'
 
 call plug#end()
 
@@ -359,9 +360,9 @@ autocmd FileType vimwiki nnoremap <buffer> j gj
 autocmd FileType vimwiki nnoremap <buffer> k gk
 autocmd FileType vimwiki setlocal noexpandtab tabstop=4 shiftwidth=4 listchars=tab:\ \ 
 autocmd FileType vimwiki setlocal nobreakindent noautoindent textwidth=0
-autocmd FileType vimwiki Goyo 45x100%
-autocmd FileType vimwiki cnoreabbrev q qa
-autocmd FileType vimwiki cnoreabbrev center center 45
+" autocmd FileType vimwiki Goyo 45x100%
+" autocmd FileType vimwiki cnoreabbrev q qa
+"autocmd FileType vimwiki cnoreabbrev center center 45
 let g:vimwiki_global_ext = 0
 let philly_wiki = {}
 let philly_wiki.path = '~/wikis/philly/'
@@ -375,3 +376,12 @@ command! WordCount !wc %
 " Copy buffer to clipboard
 " previously used `cat` instead of `:w !tee`, which read from saved file, not buffer
 command! Yank :w !tee | xclip -selection clipboard & echo "Copied buffer to clipboard"
+
+
+" Don't check for capitalization when doing spell check
+" (run `:set spell` to enable Spell Check, `]s` to traverse)
+set spellcapcheck=
+nnoremap sp :set spell!<CR>
+nnoremap sP z= 1 <CR> <CR>
+
+nnoremap <BS> :NERDTree <CR>
