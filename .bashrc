@@ -8,12 +8,20 @@ esac
 # export MOON=$(curl -s wttr.in?format="%m")
 
 # Cursor
+if [ $HOSTNAME == 'debbie-harry' ]; then
+  PS1_EMOJI='📻🎶'
+elif [ $HOSTNAME == 'owl-house' ]; then
+  PS1_EMOJI='🦉🏠'
+else
+  PS1_EMOJI='x'
+fi
+
 PS1_RESET='\033[0m'
 PS1_BG='\033[47m'
 PS1_FG='\033[0;30m'
 TRIANGLE_SYMBOL=$'\uE0B0'
 #export PS1="$PS1_FG$PS1_BG\w$PS1_RESET$TRIANGLE_SYMBOL "
-export PS1="🦉🏠 \[\e[32m\]\w\[\e[m\] "
+export PS1="$PS1_EMOJI\[\e[32m\]\w\[\e[m\] "
 
 # Fun colors
 export CLICOLOR=1
