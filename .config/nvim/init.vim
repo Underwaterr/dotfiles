@@ -66,6 +66,9 @@ map <S-Up> <C-Y>
 " How many lines you see above and below cursor
 set scrolloff=8
 
+" see the column of the cursor!
+" :set cursorcolumn
+
 " typing 'help' expands to 'tab help'
 cabbrev help tab help
 
@@ -96,9 +99,13 @@ nmap <Tab> :tabnext<CR>
 nmap sN :NERDTreeFind<CR>
 
 " Motions for Telescope
-nmap sf :Telescope live_grep<CR>
-nmap sn :Telescope find_files<CR>
-nmap sF :Telescope<CR>
+" nmap sg :Telescope live_grep<CR>
+" nmap sf :Telescope find_files<CR>
+" nmap sT :Telescope<CR>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
 " Using vim-plug (https://github.com/junegunn/vim-plug)
 " Installed at `~/.vim/autoload/plug.vim`
@@ -164,8 +171,8 @@ call plug#begin()
 
   " File Search
   Plug 'nvim-lua/plenary.nvim'
-  "Plug 'nvim-telescope/telescope.nvim'
-  "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  Plug 'nvim-telescope/telescope.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
   " Debugging
   Plug 'puremourning/vimspector'
@@ -291,7 +298,9 @@ highlight Pmenu ctermfg=white
 
 " Finally getting around to the leader key
 let g:mapleader=';'
-nnoremap <Leader>; :echo 'Vim says hello!'<CR>
+nnoremap <Leader>h :echo 'Vim says hello!'<CR>
+nnoremap <Leader>; :VisualBlockMode<CR>
+nnoremap <Leader>: :set cursorcolumn!<CR>
 
 " change highlighting for code fold
 highlight Folded ctermbg=black
