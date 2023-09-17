@@ -5,7 +5,7 @@ case $- in
 esac
 
 # 🌙
-# export MOON=$(curl -s wttr.in?format="%m")
+#export MOON=$(curl -s wttr.in?format="%m")
 
 # Cursor
 if [ $HOSTNAME == 'debbie-harry' ]; then
@@ -21,7 +21,7 @@ PS1_BG='\033[47m'
 PS1_FG='\033[0;30m'
 TRIANGLE_SYMBOL=$'\uE0B0'
 #export PS1="$PS1_FG$PS1_BG\w$PS1_RESET$TRIANGLE_SYMBOL "
-export PS1="$PS1_EMOJI\[\e[32m\]\w\[\e[m\] "
+export PS1="🧚👢 \[\e[32m\]\w\[\e[m\] "
 
 # Fun colors
 export CLICOLOR=1
@@ -131,10 +131,10 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
 # Add Rust to PATH
-export PATH="$PATH:~/.cargo/bin"
+#export PATH="$PATH:~/.cargo/bin"
 
 # Something else with Rust
-. "$HOME/.cargo/env"
+#. "$HOME/.cargo/env"
 
 # Add `.local/bin` to PATH
 export PATH="$PATH:~/.local/bin/"
@@ -142,15 +142,9 @@ export PATH="$PATH:~/.local/bin/"
 # Add `~/bin` to PATH
 export PATH="$PATH:~/bin/"
 
-# ardupilot is gonna ardupilot
-if command -v ardupilot &> /dev/null
-then
-  source /home/t/drone/ardupilot/Tools/completion/completion.bash
-fi
-
 # All good! nyan!
 if [ $TERM = "xterm-kitty" ]; 
-  then kitty +kitten icat --align left ~/ubuntu/Pictures/nyan.png
+  then kitty +kitten icat --align left ~/.sabbath.png
   else echo "Meow 🌈🐱✨";
 fi;
 
