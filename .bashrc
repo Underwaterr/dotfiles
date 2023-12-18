@@ -12,8 +12,10 @@ if [ $HOSTNAME == 'debbie-harry' ]; then
   PS1_EMOJI='📻🎶'
 elif [ $HOSTNAME == 'owl-house' ]; then
   PS1_EMOJI='🦉🏠'
-else
-  PS1_EMOJI='x'
+elif [ $HOSTNAME == 'fairy-boots' ]; then
+  PS1_EMOJI="🧚👢"
+elif [ $HOSTNAME == 'astro-alloy' ]; then
+  PS1_EMOJI="☽☿️"
 fi
 
 PS1_RESET='\033[0m'
@@ -21,7 +23,7 @@ PS1_BG='\033[47m'
 PS1_FG='\033[0;30m'
 TRIANGLE_SYMBOL=$'\uE0B0'
 #export PS1="$PS1_FG$PS1_BG\w$PS1_RESET$TRIANGLE_SYMBOL "
-export PS1="🧚👢 \[\e[32m\]\w\[\e[m\] "
+export PS1="$PS1_EMOJI \[\e[32m\]\w\[\e[m\] "
 
 # Fun colors
 export CLICOLOR=1
@@ -149,7 +151,7 @@ export PATH="$PATH:~/bin/"
 
 # All good! nyan!
 if [ $TERM = "xterm-kitty" ]; 
-  then kitty +kitten icat --align left ~/.sabbath.png
+  then kitty +kitten icat --align left ~/.splash.png
   else echo "Meow 🌈🐱✨";
 fi;
 
