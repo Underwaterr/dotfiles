@@ -7,6 +7,9 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+" Classic
+set nocompatible
+
 " Highlight matching brace
 set showmatch
 
@@ -121,21 +124,11 @@ call plug#begin()
   Plug 'scrooloose/nerdtree'
   Plug 'Xuyuanp/nerdtree-git-plugin'
 
-
   " C++
   Plug 'octol/vim-cpp-enhanced-highlight'
 
   " HTML5
   Plug 'othree/html5.vim'
-
-  " JavaScript
-  Plug 'pangloss/vim-javascript'  " This kind indents JS inside HTML correctly
-  "Plug 'yuezk/vim-js'            " This one does not!
-  Plug 'maxmellon/vim-jsx-pretty'
-  Plug 'posva/vim-vue'
-  Plug 'digitaltoad/vim-pug'
-  " Plug 'prettier/prettier'
-  Plug 'prettier/vim-prettier'
 
   " Python
   Plug 'vim-python/python-syntax'
@@ -170,9 +163,9 @@ call plug#begin()
   " Plug 'natebosch/vim-lsc'
 
   " File Search
-  Plug 'nvim-lua/plenary.nvim'
-  Plug 'nvim-telescope/telescope.nvim'
-  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  "Plug 'nvim-lua/plenary.nvim'
+  "Plug 'nvim-telescope/telescope.nvim'
+  "Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
 
   " Debugging
   Plug 'puremourning/vimspector'
@@ -189,6 +182,25 @@ call plug#begin()
 
   " Dev Iconz for NERD Tree
   Plug 'ryanoasis/vim-devicons'
+
+  " KDL?
+  Plug 'imsnif/kdl.vim'
+
+  " Debugging...
+  " JavaScript
+  Plug 'pangloss/vim-javascript'  " This kind indents JS inside HTML correctly
+  "Plug 'yuezk/vim-js'            " This one does not!
+  "Plug 'maxmellon/vim-jsx-pretty'
+  Plug 'posva/vim-vue'
+  Plug 'digitaltoad/vim-pug'
+  "Plug 'prettier/prettier'
+  "Plug 'prettier/vim-prettier'
+  Plug 'prisma/vim-prisma'
+  Plug 'leafgarland/typescript-vim'
+  "Plug 'quramy/tsuquyomi'
+  Plug 'herringtondarkholme/yats.vim'
+  Plug 'dracula/vim', { 'as': 'dracula' }
+
 
 call plug#end()
 
@@ -254,7 +266,7 @@ call plug#end()
     \ 'i' : '🧚',
     \ 'R' : '💁',
     \ 'v' : '👓',
-    \ 'V' : '🕶',
+    \ 'V' : '😎',
     \ "\<C-v>": '🥽',
     \ 'c' : '✨',
     \ 's' : 'SELECT',
@@ -323,9 +335,6 @@ nmap Ki <Plug>VimspectorBalloonEval
 nmap Kn <Plug>VimspectorStepInto
 nmap Ko <Plug>VimspectorStepOut
 
-" Enter Visual Block Mode cuz 'C-v' is used for 'paste'
-command! VisualBlockMode normal! <C-v>
-
 " trim whitespace at the end of a line
 command! TrimWhitespace :%s/\s\+$//e
 
@@ -393,4 +402,13 @@ set spellcapcheck=
 nnoremap sp :set spell!<CR>
 nnoremap sP z= 1 <CR> <CR>
 
+
+" Backspace in Normal Mode to open NERDTree
 nnoremap <BS> :NERDTree <CR>
+
+" Enter Visual Block Mode cuz 'C-v' is used for 'paste'
+" command! VisualBlockMode normal! <C-v>
+
+" Escape key in Normal Mode to enter Visual Block mode
+nnoremap <S-ESC> <C-v>
+

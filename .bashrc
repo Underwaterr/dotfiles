@@ -55,7 +55,7 @@ alias pm="python manage.py"
 alias reset-audio="pulseaudio -k"
 alias server="python3 -m http.server $1"
 alias ssh="kitty +kitten ssh" # Fix SSH for Kitty
-alias tree="tree --dirsfirst -I node_modules -I __pycache__"
+alias tree="tree -I node_modules -I __pycache__ --dirsfirst "
 alias v="nvim"
 alias vv="view -M" # view read-only in vim
 alias weather='curl -s wttr.in/Austin?u | head -n 17'
@@ -108,6 +108,11 @@ config() {
   elif [ $1 = "nvim"  ];  then nvim "$HOME/.config/nvim/init.vim";
   elif [ $1 = "vim"   ];  then nvim "$HOME/.config/nvim/init.vim";
   else echo "No config for $1 😿"; fi;
+}
+
+# Find!
+greg() {
+  find . | grep $1
 }
 
 # Allow vi editing mode!
