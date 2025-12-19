@@ -25,6 +25,10 @@ TRIANGLE_SYMBOL=$'\uE0B0'
 #export PS1="$PS1_FG$PS1_BG\w$PS1_RESET$TRIANGLE_SYMBOL "
 export PS1="$PS1_EMOJI \[\e[32m\]\w\[\e[m\] "
 
+# Add Git Branch to prompt!
+#source ~/.git-prompt.sh
+#export PS1="$(__git_ps1 '(%s)')\n$PS1_EMOJI \[\e[32m\]\w\[\e[m\] "
+
 # Fun colors
 export CLICOLOR=1
 export LSCOLORS=ExFxBxDxCxegedabagacad
@@ -38,10 +42,10 @@ export EDITOR=nvim
 
 # Aliases
 alias :q="exit" # teehee
-alias anki='anki > /dev/null &'
 alias bat='batcat --theme="base16"'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/ --work-tree=$HOME'
+alias ffmpeg='ffmpeg -hide_banner'
 alias filesize='du -B G -d 1'
 alias goodbye='echo "goodbye!"; shutdown now'
 alias js='nodemon -q -x "clear;node"'
@@ -53,38 +57,29 @@ alias mv="mv -vi" # ask before overwriting a file!
 alias open="xdg-open"
 alias please="sudo apt"
 alias pm="python manage.py"
-#alias reset-audio="systemctl --user restart pulseaduio && sudo alsa force-reload"
 alias reset-audio="pulseaudio -k"
 alias server="python3 -m http.server $1"
 alias ssh="kitty +kitten ssh" # Fix SSH for Kitty
 alias tree="tree -I node_modules -I __pycache__ --dirsfirst "
 alias v="nvim"
 alias vv="view -M" # view read-only in vim
-alias weather='curl -s wttr.in/Austin?u | head -n 17'
+alias weather='curl -s wttr.in/Philadelphia?u | head -n 17'
 alias book="vim -c ':VimwikiIndex 2'"
 alias diary="vim -c ':VimwikiMakeDiaryNote 2'"
+alias ns="npm start"
+alias htop="btop"
+alias fd="fdfind"
 
-vpn() {
-  if ! command -v protonvpn-cli &> /dev/null; then
-    echo 'Proton VPN is not installed!'
-    exit
-  fi
+tartar() {
+  tar --create --file $1 -C $2 . --verbose
+}
+untar() {
+  tar --extract --file $1 --keep-old-files --verbose 
+}
 
-  if [[ $1 == 'login' ]]; then
-    read -p "Enter your Proton VPN email: " EMAIL
-    protonvpn-cli login $EMAIL
-  elif [[ $1 == 'logout' ]]; then
-    protonvpn-cli logout
-  elif [[ $1 == 'disconnect' ]]; then
-    protonvpn-cli disconnect
-  elif [[ $1 == 'connect' ]]; then
-    protonvpn-cli connect --p2p
-  elif [[ $1 == 'status' ]]; then
-    protonvpn-cli status
-  else
-    echo "🤖 Welcome to Tyler's VPN command!"
-    echo -e 'You have the following options: \n\tlogin\n\tlogout\n\tconnect\n\tdisconnect\n\tstatus'
-  fi
+search() {
+  echo "grep -R --exclude-dir=node_modules/ -n --color -e $1"
+  grep -R --exclude-dir=node_modules/ -n --color -e "$1"
 }
 
 wiki() {
@@ -107,8 +102,8 @@ config() {
   elif [ $1 = "bat"   ];  then nvim "$HOME/.config/bat/config";
   elif [ $1 = "kitty" ];  then nvim "$HOME/.config/kitty/kitty.conf";
   elif [ $1 = "tmux"  ];  then nvim "$HOME/.tmux.conf";
-  elif [ $1 = "nvim"  ];  then nvim "$HOME/.config/nvim/init.vim";
-  elif [ $1 = "vim"   ];  then nvim "$HOME/.config/nvim/init.vim";
+  elif [ $1 = "nvim"  ];  then nvim "$HOME/.config/nvim/init.lua";
+  elif [ $1 = "vim"   ];  then nvim "$HOME/.config/nvim/init.lua";
   else echo "No config for $1 😿"; fi;
 }
 
@@ -130,7 +125,7 @@ shopt -s extglob
 
 # automatically go to directory without `cd`!
 # surprise, turns out this causes HARD TO FIND BUGS!
-#shopt -s autocd
+# shopt -s autocd
 
 # Add `nvim` to PATH
 export NVM_DIR="$HOME/.nvm"
@@ -148,6 +143,12 @@ export PATH="$PATH:~/.local/bin/"
 
 # Add `~/bin` to PATH
 export PATH="$PATH:~/bin/"
+
+# Add Swift to PATH
+export PATH="$PATH:/usr/local/swift/bin"
+
+# Add DuckDB to PATH
+export PATH='/home/t/.duckdb/cli/latest':$PATH
 
 # All good! nyan!
 if [ $TERM = "xterm-kitty" ]; 
@@ -179,3 +180,10 @@ PROMPT_COMMAND=command2
 
 # custom SUDO prompt
 export SUDO_PROMPT="sudo incantation: "
+
+# Volta!
+export VOLTA_HOME="$HOME/.volta"
+export PATH="$VOLTA_HOME/bin:$PATH"
+
+# Composer! (for PHP)
+export PATH="/home/t/.config/composer/vendor/bin:$PATH"
