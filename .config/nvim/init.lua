@@ -5,7 +5,7 @@
 
 -- source our vimscript file
 -- (path must be absolute)
-vim.cmd('source ~/.config/nvim/config.vim')
+-- vim.cmd('source ~/.config/nvim/config.vim')
 
 -- disable `netrw`
 -- (do this early to avoid race conditions with `nvim-tree`)
@@ -61,6 +61,23 @@ vim.o.foldmethod = 'indent'
 -- set foldmethod=syntax
 -- don't start w/ anything folded tho
 vim.o.foldlevelstart = 99
+
+
+-- splits
+vim.o.splitright = true
+vim.o.splitbelow = true
+vim.keymap.set('n', 'ss', ":vnew<CR>")          -- split right
+vim.keymap.set('n', 'sS', ":lefta vnew<CR>")    -- split left
+vim.keymap.set('n', 'sv', ":new<CR>")           -- split below
+vim.keymap.set('n', 'sh', "<C-w>h")            -- go to split below
+vim.keymap.set('n', 'sk', "<C-w>k")            -- go to split above
+vim.keymap.set('n', 'sj', "<C-w>j")            -- go to split let
+vim.keymap.set('n', 'sl', "<C-w>l")            -- go to split right
+
+-- tabs
+vim.keymap.set('n', 'st', ":tabnew<CR>")        -- new tab
+vim.keymap.set('n', '<S-Tab>', ":tabprev<CR>") -- go to next tab
+vim.keymap.set('n', '<Tab>', ":tabnext<CR>")   -- go to previous tab
 
 
 -- Vim Plug stuff
@@ -224,9 +241,19 @@ require("mason").setup({})
 
 -- LSP error messages
 vim.diagnostic.enable = true
-vim.diagnostic.config({ virtual_lines = true })
-local function yeah()
-  vim.diagnostic.open_float({ scope = 'cursor', })
-end
-vim.keymap.set('n', 'S', yeah)
+vim.diagnostic.config({
+  virtual_text = false,       -- don't show inline text
+  signs = false,              -- don't show symbols in the gutter
+  underline = false,          -- don't underline relevant text
+  update_in_insert = false,   -- don't update diagnostics while typing
+  severity_sort = true        -- sort by severity
+})
+local function yeah() vim.diagnostic.open_float({ scope = 'cursor' }) end
+local function diag() vim.diagnostic.config({ underline = not vim.diagnostic.config().underline }) end
+vim.keymap.set('n', '<CR>', yeah, { desc = "Toggle floating window" })
+vim.keymap.set("n", "K", diag, { desc = "Toggle underlining diagnostics" } )
+-- vim.keymap.set('n', '<S-k>', vim.lsp.buf.hover)
 vim.o.winborder = 'rounded'
+
+-- toggle underline
+
