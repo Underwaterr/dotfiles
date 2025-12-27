@@ -64,8 +64,8 @@ alias tree="tree -I node_modules -I __pycache__ --dirsfirst "
 alias v="nvim"
 alias vv="view -M" # view read-only in vim
 alias weather='curl -s wttr.in/Philadelphia?u | head -n 17'
-alias book="vim -c ':VimwikiIndex 2'"
-alias diary="vim -c ':VimwikiMakeDiaryNote 2'"
+alias book="nvim -c ':VimwikiIndex 2'"
+alias diary="nvim -c ':VimwikiMakeDiaryNote 2'"
 alias ns="npm start"
 alias htop="btop"
 alias fd="fdfind"
@@ -83,7 +83,7 @@ search() {
 }
 
 wiki() {
-  vim -c :VimwikiIndex"$1" 
+  nvim -c :VimwikiIndex"$1" 
 }
 
 # Clipboard

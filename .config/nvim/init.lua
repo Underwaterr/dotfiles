@@ -95,6 +95,9 @@ vim.call('plug#begin')
 
   Plug('lifepillar/pgsql.vim')
 
+  -- Vimwiki!!
+  Plug 'vimwiki/vimwiki'
+
 vim.call('plug#end')
 
 -- use Dracula color scheme!
