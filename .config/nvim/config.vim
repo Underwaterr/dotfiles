@@ -22,19 +22,3 @@ nnoremap <Leader>: :set cursorcolumn!<CR>
 " Visual Block Mode wooooo
 command! VisualBlockMode normal! <C-v>
 nnoremap <Leader>; :VisualBlockMode<CR>
-
-
-" Better Window Management
-" From https://youtu.be/sSOfr2MtRU8
-set splitright
-set splitbelow
-nmap ss :vnew <CR>
-nmap sS :lefta vnew <CR>
-nmap sv :new <CR>
-nmap st :tabnew <CR>
-map sh <C-w>h
-map sk <C-w>k
-map sj <C-w>j
-map sl <C-w>l
-nmap <S-Tab> :tabprev<CR>
-nmap <Tab> :tabnext<CR>

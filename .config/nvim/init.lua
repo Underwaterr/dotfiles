@@ -1,8 +1,3 @@
-
--- want to do some keymapping?
--- :help vim.keymap.set()
-
-
 -- source our vimscript file
 -- (path must be absolute)
 -- vim.cmd('source ~/.config/nvim/config.vim')
@@ -13,44 +8,35 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
 -- teeny tiny tabs
-vim.o.tabstop = 2
+vim.o.tabstop = 2         -- tabs are two spaces wide
 vim.o.shiftwidth = 2
-vim.o.expandtab = true
+vim.o.expandtab = true    -- convert tabs to spaces
 
 -- word wrap
 vim.o.wrap = true					-- lines longer than window width will wrap
 vim.o.linebreak = true		-- wrap based on `breakat` characters
 
--- ignore case when searching in lowercase
-vim.o.smartcase = true
-vim.o.ignorecase = true
-
--- don't highlight text when searching
-vim.o.hlsearch = false
-
--- Ask to save changes on quit
-vim.o.confirm = true
-
--- Automatically change working directory to current buffer
-vim.o.autochdir = true
-
---" How many lines you see above and below cursor
--- set scrolloff=8
-vim.o.scrolloff = 8
-
--- hide the default "mode" since we show it in Lualine
-vim.o.showmode = false
+-- search case-sensitivity
+vim.o.ignorecase = true   -- ignore case when searching
+vim.o.smartcase = true    -- ignore "ignorecase" if search contains uppercase
 
 -- Set relative line numbers
 vim.o.number = true
 vim.o.relativenumber = true
 
+-- more misc. settings
+vim.o.hlsearch = false      -- don't highlight text when searching
+vim.o.confirm = true        -- Ask to save changes on quit
+vim.o.autochdir = true      -- Automatically change working directory to current buffer
+vim.o.scrolloff = 8         -- How many lines you see above and below cursor
+vim.o.winborder = 'rounded' -- show windows with rounded corners
+vim.o.showmode = false      -- hide the default "mode" since we show it in Lualine
+
 -- spell check!
 -- don't check for capitalization when doing spell check
--- (run `:set spell` to enable Spell Check, `]s` to traverse)
 vim.o.spellcapcheck = ""
-vim.keymap.set('n', 'sp', ":set spell!<CR>")
-vim.keymap.set('n', 'sP', "z= 1 <CR> <CR>")
+vim.keymap.set('n', 'sp', ":set spell!<CR>")  -- run spell check with 'sp'
+vim.keymap.set('n', 'sP', "z= 1 <CR> <CR>")   -- replace word with 'sP'
 
 -- code folding
 --set fillchars=fold:\
@@ -62,13 +48,20 @@ vim.o.foldmethod = 'indent'
 -- don't start w/ anything folded tho
 vim.o.foldlevelstart = 99
 
+-- Shift+Esc to enter Visual Block Mode
+-- TODO: convert to Lua!
+vim.cmd('nnoremap <S-ESC> <C-v>')
+
+-- turn off automatic comment insertion
+vim.cmd('autocmd FileType * setlocal formatoptions-=cro')
+
 
 -- splits
 vim.o.splitright = true
 vim.o.splitbelow = true
-vim.keymap.set('n', 'ss', ":vnew<CR>")          -- split right
-vim.keymap.set('n', 'sS', ":lefta vnew<CR>")    -- split left
-vim.keymap.set('n', 'sv', ":new<CR>")           -- split below
+vim.keymap.set('n', 'ss', ":vnew<CR>")         -- split right
+vim.keymap.set('n', 'sS', ":lefta vnew<CR>")   -- split left
+vim.keymap.set('n', 'sv', ":new<CR>")          -- split below
 vim.keymap.set('n', 'sh', "<C-w>h")            -- go to split below
 vim.keymap.set('n', 'sk', "<C-w>k")            -- go to split above
 vim.keymap.set('n', 'sj', "<C-w>j")            -- go to split let
@@ -89,7 +82,7 @@ vim.call('plug#begin')
   Plug('kevinhwang91/promise-async')            -- lua utilities 
 	Plug('nvim-tree/nvim-web-devicons')           -- nerd fonts
 	Plug('nvim-tree/nvim-tree.lua')               -- file explorer
-  Plug('neovim/nvim-lspconfig')                 -- LSP
+  -- Plug('neovim/nvim-lspconfig')                 -- LSP
   Plug('mfussenegger/nvim-dap')                 -- DAP
 	Plug('dracula/vim', { ['as'] = 'dracula' })   -- theme
 	Plug('nvim-lualine/lualine.nvim')             -- status bar
@@ -97,13 +90,23 @@ vim.call('plug#begin')
   Plug('kevinhwang91/nvim-ufo')                 -- code folding
   Plug('mason-org/mason.nvim')                  -- LSP management
   --Plug('folke/trouble.nvim')                    -- LSP sidebars, etc 
+  Plug('pmizio/typescript-tools.nvim')          -- TypeScript LSP, not on Mason
+  Plug('saghen/blink.cmp')                      -- autocomplete 😱
+
+  Plug('lifepillar/pgsql.vim')
 
 vim.call('plug#end')
 
-
--- Dracula!
+-- use Dracula color scheme!
 vim.cmd[[colorscheme dracula]]
 
+-- PGSQL
+vim.cmd("let g:sql_type_default = 'pgsql'")
+
+-- Telescope
+local builtin = require('telescope.builtin')
+vim.cmd("let g:mapleader=';'")
+vim.keymap.set('n', '<leader>f', builtin.live_grep, { desc = 'Telescope live grep' })
 
 -- Lualine
 local mode_map = {
@@ -119,9 +122,8 @@ local mode_map = {
 
 require('lualine').setup({
 	options = {
-		theme = 'dracula',
-		-- don't show lualine in the file explorer!
-		disabled_filetypes = { 'NvimTree' }
+		theme = 'dracula',                  -- use Dracula theme!
+		disabled_filetypes = { 'NvimTree' } -- don't show lualine in the file explorer!
 	},
 	sections = {
 		lualine_a = { { 'mode', fmt = function(s) return mode_map[s] or s end } },
@@ -152,8 +154,8 @@ local function get_nvim_tree_mappings(bufnr)
     api.tree.change_root_to_parent()
   end
 
-	vim.keymap.set('n', '<Bs>', api.tree.close, 						  		opts('Close'))
-	vim.keymap.set('n', '<Cr>', api.node.open.edit, 				  		opts('Open'))
+	vim.keymap.set('n', '<BS>', api.tree.close, 						  		opts('Close'))
+	vim.keymap.set('n', '<CR>', api.node.open.edit,               opts('Open'))
 	vim.keymap.set('n', '?', 		api.tree.toggle_help, 			  		opts('Help'))
 	vim.keymap.set('n', 'R', 		api.tree.reload, 					        opts('Refresh'))
 	vim.keymap.set('n', 'a', 		api.fs.create, 									  opts('Create'))
@@ -184,15 +186,12 @@ require("nvim-tree").setup({
 	filters = {
 		dotfiles = false,
 		git_ignored = true,
-    -- don't show `.git/` or `.gitignore`
-    custom = { ".git" }
+    custom = { ".git" }                   -- don't show `.git/` or `.gitignore`
 	},
 	actions = {
 		open_file = {
-			-- close when you open a file
-			quit_on_open = true,
-			-- automatically open in last active buffer
-			window_picker = { enable = false }
+			quit_on_open = true,                -- close when you open a file
+			window_picker = { enable = false }  -- automatically open in last active buffer
 		}
 	},
 	on_attach = get_nvim_tree_mappings
@@ -212,11 +211,16 @@ vim.api.nvim_set_keymap("n", "<BS>", ":NvimTreeOpen<CR>", {noremap = true })
 --vim.lsp.enable('nginx_language_server')		-- Nginx
 --vim.lsp.enable('rust_analyzer')						-- Rust
 --vim.lsp.enable('vimls')										-- Vimscript
-vim.lsp.enable('lua_ls')									  -- Lua
-vim.lsp.enable('ts_ls')                     -- TypeScript
 
+
+-- LSP? for MY postgres??
+vim.lsp.enable('postgres_lsp')
+vim.lsp.config('postgres_lsp', {
+  workspace_required = false
+})
 
 -- config for Lua LSP
+vim.lsp.enable('lua_ls')
 vim.lsp.config('lua_ls', {
 	settings = {
 		-- stop warning me about the `vim` global plz
@@ -224,6 +228,30 @@ vim.lsp.config('lua_ls', {
 	}
 })
 
+-- config for TypeScript LSP
+vim.lsp.enable('typescript-tools')
+require('typescript-tools').setup({})
+
+
+-- Config for Blink autocomplete
+require('blink.cmp').setup({
+  fuzzy = {
+    implementation = 'lua'
+  },
+  keymap = {
+    preset = 'default',
+    ['<Right>'] = { 'show', 'select_and_accept', 'fallback' },
+    ['<Left>'] = { 'cancel', 'fallback' },
+  },
+  completion = {
+    accept = { auto_brackets = { enabled = false } },
+    documentation = { auto_show = true, auto_show_delay_ms = 0 },
+    keyword = { range = 'prefix' },
+    list = { selection = { preselect = false } },
+    menu = { auto_show = false },
+    --trigger = { show_on_backspace = true }
+  },
+})
 
 -- config for UFO code folding
 require('ufo').setup({
@@ -232,6 +260,7 @@ require('ufo').setup({
   end
 })
 
+-- this doesn't work woooo
 vim.keymap.set('n', 'zp', require("ufo.preview").peekFoldedLinesUnderCursor)
 
 
@@ -248,12 +277,16 @@ vim.diagnostic.config({
   update_in_insert = false,   -- don't update diagnostics while typing
   severity_sort = true        -- sort by severity
 })
-local function yeah() vim.diagnostic.open_float({ scope = 'cursor' }) end
+local function yeah()
+  vim.diagnostic.open_float({ scope = 'cursor' })
+  vim.diagnostic.open_float() -- call a second time to enter
+end
 local function diag() vim.diagnostic.config({ underline = not vim.diagnostic.config().underline }) end
 vim.keymap.set('n', '<CR>', yeah, { desc = "Toggle floating window" })
-vim.keymap.set("n", "K", diag, { desc = "Toggle underlining diagnostics" } )
--- vim.keymap.set('n', '<S-k>', vim.lsp.buf.hover)
-vim.o.winborder = 'rounded'
+vim.keymap.set("n", "sd", diag, { desc = "Toggle underlining diagnostics" } )
+vim.keymap.set("n", "sn", vim.diagnostic.goto_next)
+vim.keymap.set("n", "sN", vim.diagnostic.goto_prev)
 
--- toggle underline
 
+-- idk why I gotta set this explicity, but I do!
+vim.cmd('autocmd Filetype markdown setlocal shiftwidth=2')
