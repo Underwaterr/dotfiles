@@ -2,6 +2,10 @@
 -- (path must be absolute)
 -- vim.cmd('source ~/.config/nvim/config.vim')
 
+-- set up Vim colors to work with the Kitty terminal
+-- https://sw.kovidgoyal.net/kitty/faq/#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim
+vim.cmd('source ~/.config/nvim/kitty-colors.vim')
+
 -- disable `netrw`
 -- (do this early to avoid race conditions with `nvim-tree`)
 vim.g.loaded_netrw = 1
@@ -100,6 +104,7 @@ vim.call('plug#begin')
 
 vim.call('plug#end')
 
+
 -- use Dracula color scheme!
 vim.cmd[[colorscheme dracula]]
 
@@ -148,6 +153,7 @@ local function get_nvim_tree_mappings(bufnr)
 
   local function toggle_both_filters()
     api.tree.toggle_gitignore_filter()
+    api.tree.toggle_hidden_filter()
     api.tree.toggle_custom_filter()
   end
 
@@ -162,7 +168,8 @@ local function get_nvim_tree_mappings(bufnr)
 	vim.keymap.set('n', '?', 		api.tree.toggle_help, 			  		opts('Help'))
 	vim.keymap.set('n', 'R', 		api.tree.reload, 					        opts('Refresh'))
 	vim.keymap.set('n', 'a', 		api.fs.create, 									  opts('Create'))
-	vim.keymap.set('n', 'c',    api.fs.copy.node,                 opts('Copy'))
+	vim.keymap.set('n', 'C',    api.fs.copy.node,                 opts('Copy'))
+	vim.keymap.set('n', 'P',    api.fs.paste,                     opts('Paste'))
 	vim.keymap.set('n', 'd', 		api.fs.trash, 						  		  opts('Trash'))
 	vim.keymap.set('n', 'h', 		toggle_both_filters,              opts('Toggle Hidden'))
 	vim.keymap.set('n', 'm', 		api.fs.rename_full, 				  		opts('Move'))
@@ -187,7 +194,7 @@ require("nvim-tree").setup({
 	respect_buf_cwd = true,
 	reload_on_bufenter = true,
 	filters = {
-		dotfiles = false,
+		dotfiles = true,
 		git_ignored = true,
     custom = { ".git" }                   -- don't show `.git/` or `.gitignore`
 	},
