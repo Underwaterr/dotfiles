@@ -229,6 +229,10 @@ vim.lsp.config('postgres_lsp', {
   workspace_required = false
 })
 
+-- LSP for Antlers :)
+vim.filetype.add({ pattern = { ['.*/*.antlers.html'] = 'antlers' } })
+vim.lsp.enable('antlersls')
+
 -- config for Lua LSP
 vim.lsp.enable('lua_ls')
 vim.lsp.config('lua_ls', {
