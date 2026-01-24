@@ -1,10 +1,7 @@
--- source our vimscript file
--- (path must be absolute)
--- vim.cmd('source ~/.config/nvim/config.vim')
-
 -- set up Vim colors to work with the Kitty terminal
 -- https://sw.kovidgoyal.net/kitty/faq/#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim
-vim.cmd('source ~/.config/nvim/kitty-colors.vim')
+-- TODO: add thhis confg to the `dotfiles` repo!!
+--vim.cmd('source ~/.config/nvim/kitty-colors.vim')
 
 -- disable `netrw`
 -- (do this early to avoid race conditions with `nvim-tree`)
@@ -59,7 +56,6 @@ vim.cmd('nnoremap <S-ESC> <C-v>')
 -- turn off automatic comment insertion
 vim.cmd('autocmd FileType * setlocal formatoptions-=cro')
 
-
 -- splits
 vim.o.splitright = true
 vim.o.splitbelow = true
@@ -76,7 +72,6 @@ vim.keymap.set('n', 'st', ":tabnew<CR>")        -- new tab
 vim.keymap.set('n', '<S-Tab>', ":tabprev<CR>") -- go to next tab
 vim.keymap.set('n', '<Tab>', ":tabnext<CR>")   -- go to previous tab
 
-
 -- Vim Plug stuff
 local vim = vim
 local Plug = vim.fn['plug#']
@@ -86,29 +81,25 @@ vim.call('plug#begin')
   Plug('kevinhwang91/promise-async')            -- lua utilities 
 	Plug('nvim-tree/nvim-web-devicons')           -- nerd fonts
 	Plug('nvim-tree/nvim-tree.lua')               -- file explorer
-  -- Plug('neovim/nvim-lspconfig')                 -- LSP
+  -- Plug('neovim/nvim-lspconfig')              -- LSP
   Plug('mfussenegger/nvim-dap')                 -- DAP
 	Plug('dracula/vim', { ['as'] = 'dracula' })   -- theme
 	Plug('nvim-lualine/lualine.nvim')             -- status bar
   Plug('nvim-telescope/telescope.nvim')         -- file search
   Plug('kevinhwang91/nvim-ufo')                 -- code folding
   Plug('mason-org/mason.nvim')                  -- LSP management
-  --Plug('folke/trouble.nvim')                    -- LSP sidebars, etc 
+  --Plug('folke/trouble.nvim')                  -- LSP sidebars, etc 
   Plug('pmizio/typescript-tools.nvim')          -- TypeScript LSP, not on Mason
   Plug('saghen/blink.cmp')                      -- autocomplete 😱
-
-  Plug('lifepillar/pgsql.vim')
-
-  -- Vimwiki!!
-  Plug 'vimwiki/vimwiki'
-
+  Plug('lifepillar/pgsql.vim')                  -- uPostgreSQL
+  Plug 'vimwiki/vimwiki'                        -- VimWiki
 vim.call('plug#end')
 
 
 -- use Dracula color scheme!
 vim.cmd[[colorscheme dracula]]
 
--- PGSQL
+-- Use Postgres syntax for SQL files
 vim.cmd("let g:sql_type_default = 'pgsql'")
 
 -- Telescope
