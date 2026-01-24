@@ -24,7 +24,7 @@ export VISUAL=nvim
 export EDITOR=nvim
 
 # custom SUDO prompt
-export SUDO_PROMPT="🔮 sudo incantation 🪄"
+export SUDO_PROMPT="🔮 sudo incantation: "
 
 # Allow vi editing mode
 # (Note we have a corresponding `~/.inputrc` configuration)
