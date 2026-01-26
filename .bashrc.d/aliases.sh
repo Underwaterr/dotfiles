@@ -19,14 +19,15 @@ alias :q="exit" # teehee
 
 # if Eza installed, use that instead of `ls`
 if command -v eza >/dev/null 2>&1
-then alias ls='eza --icons --group-directories-first --long --no-permissions --no-user --no-time --no-filesize'; fi
+then alias ls='eza -1 --icons --group-directories-first'
+fi
 
 # if using kitty terminal, use their "kitten" to fix SSH
 if [ $TERM == 'xterm-kitty' ]; then alias ssh="kitty +kitten ssh"; fi
 
 alias bat='batcat --theme="base16"'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias open="xdg-open"
 alias server="python3 -m http.server $1"
 alias tree="tree -I node_modules -I __pycache__ --dirsfirst "
