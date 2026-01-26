@@ -9,7 +9,14 @@ config() {
   else echo "No config for $1 😿"; fi;
 }
 
-# idk about this one...
+# `wiki` takes you to the first wiki
+# `wiki 1` takes you to the second, etc.
 wiki() {
   nvim -c :VimwikiIndex"$1" 
+}
+
+lazy() {
+  git add -A;
+  git commit --allow-empty-message -m "";
+  git push origin main
 }
