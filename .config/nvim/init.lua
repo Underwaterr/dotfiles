@@ -293,5 +293,12 @@ vim.keymap.set("n", "sn", vim.diagnostic.goto_next)
 vim.keymap.set("n", "sN", vim.diagnostic.goto_prev)
 
 
+-- VimWiki
+vim.g.vimwiki_list = {
+  { path = "~/apps/vimwiki/database/" }, 
+  { path = "~/apps/vimwiki/book/" }
+}
+
+
 -- idk why I gotta set this explicity, but I do!
 vim.cmd('autocmd Filetype markdown setlocal shiftwidth=2')
