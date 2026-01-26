@@ -126,6 +126,7 @@ require('lualine').setup({
 	},
 	sections = {
 		lualine_a = { { 'mode', fmt = function(s) return mode_map[s] or s end } },
+    lualine_b = { 'diff', 'diagnostics' },
 		lualine_y = { 'filesize' }
 	}
 })
