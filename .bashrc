@@ -38,6 +38,7 @@ set -o noclobber
 # Extended Globbing operators
 shopt -s extglob
 
+
 # Source all scripts in ~/.bashrc.d/
 if [ -d "$HOME/.bashrc.d" ]; then
     for script in "$HOME/.bashrc.d/"*; do
@@ -46,6 +47,14 @@ if [ -d "$HOME/.bashrc.d" ]; then
         fi
     done
 fi
+
+
+# Use bash-completion, if available, and avoid double-sourcing
+[[ $PS1 &&
+  ! ${BASH_COMPLETION_VERSINFO:-} &&
+  -f /usr/share/bash-completion/bash_completion ]] &&
+    . /usr/share/bash-completion/bash_completion
+
 
 # All good! nyan!
 if [ $TERM = "xterm-kitty" ]; 
