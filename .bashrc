@@ -58,7 +58,7 @@ fi
 
 
 # All good! nyan!
-if [ $HOSTNAME == 'garfield-solutions' ]; then cat .garf;
+if [ $HOSTNAME == 'garfield-solutions' ]; then cat ~/.garf;
 elif [ $TERM = "xterm-kitty" ]; then kitty +kitten icat --align left ~/.splash.png;
 else echo "Meow 🌈🐱✨";
 fi;
