@@ -5,12 +5,13 @@ case $- in
 esac
 
 # Map $HOSTNAME to an emoji pair for our prompt!
-if   [ $HOSTNAME == 'debbie-harry'  ]; then PS1_EMOJI='📻🎶'
-elif [ $HOSTNAME == 'owl-house'     ]; then PS1_EMOJI='🦉🏠'
-elif [ $HOSTNAME == 'fairy-boots'   ]; then PS1_EMOJI="🧚👢"
-elif [ $HOSTNAME == 'astro-alloy'   ]; then PS1_EMOJI="🌌🌠"
-elif [ $HOSTNAME == 'amphibia'      ]; then PS1_EMOJI='🐸⚔️'
-elif [ $HOSTNAME == 'gravity-falls' ]; then PS1_EMOJI='🌲🌙'
+if   [ $HOSTNAME == 'debbie-harry'       ]; then PS1_EMOJI='📻🎶'
+elif [ $HOSTNAME == 'owl-house'          ]; then PS1_EMOJI='🦉🏠'
+elif [ $HOSTNAME == 'fairy-boots'        ]; then PS1_EMOJI="🧚👢"
+elif [ $HOSTNAME == 'astro-alloy'        ]; then PS1_EMOJI="🌌🌠"
+elif [ $HOSTNAME == 'amphibia'           ]; then PS1_EMOJI='🐸⚔️'
+elif [ $HOSTNAME == 'gravity-falls'      ]; then PS1_EMOJI='🌲🌙'
+elif [ $HOSTNAME == 'garfield-solutions' ]; then PS1_EMOJI='😼🧸'
 fi
 
 # Our prompt is `emoji pair` then the current working directory
@@ -57,7 +58,7 @@ fi
 
 
 # All good! nyan!
-if [ $TERM = "xterm-kitty" ]; 
-  then kitty +kitten icat --align left ~/.splash.png
-  else echo "Meow 🌈🐱✨";
+if [ $HOSTNAME == 'garfield-solutions' ]; then cat .garf
+elif[ $TERM = "xterm-kitty" ]; then kitty +kitten icat --align left ~/.splash.png
+else echo "Meow 🌈🐱✨";
 fi;
