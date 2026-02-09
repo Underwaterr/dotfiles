@@ -1,7 +1,6 @@
 -- set up Vim colors to work with the Kitty terminal
 -- https://sw.kovidgoyal.net/kitty/faq/#using-a-color-theme-with-a-background-color-does-not-work-well-in-vim
--- TODO: add thhis confg to the `dotfiles` repo!!
---vim.cmd('source ~/.config/nvim/kitty-colors.vim')
+vim.cmd('source ~/.config/nvim/kitty-colors.vim')
 
 -- disable `netrw`
 -- (do this early to avoid race conditions with `nvim-tree`)
