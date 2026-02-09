@@ -91,7 +91,9 @@ vim.call('plug#begin')
   Plug('pmizio/typescript-tools.nvim')          -- TypeScript LSP, not on Mason
   Plug('saghen/blink.cmp')                      -- autocomplete 😱
   Plug('lifepillar/pgsql.vim')                  -- uPostgreSQL
-  Plug 'vimwiki/vimwiki'                        -- VimWiki
+  Plug('vimwiki/vimwiki')                        -- VimWiki
+
+  Plug('MeanderingProgrammer/render-markdown.nvim')
 vim.call('plug#end')
 
 
@@ -304,3 +306,14 @@ vim.g.vimwiki_global_ext = 0
 
 -- idk why I gotta set this explicity, but I do!
 vim.cmd('autocmd Filetype markdown setlocal shiftwidth=2')
+
+
+-- more markdown stuff
+require('render-markdown').setup({
+  file_types = { 'markdown', 'vimwiki' }
+})
+
+-- TODO: fix this later
+-- (running into GitHub server problems)
+vim.treesitter.language.register('markdown', 'vimwiki')
+vim.g.markdown_fenced_languages = {'html', 'python', 'lua', 'vim', 'typescript', 'javascript'}
