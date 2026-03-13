@@ -14,7 +14,6 @@ alias .....="cd ../../../.."
 alias v="nvim"
 alias vv="view -M" # for read-only
 alias book="nvim -c ':VimwikiIndex 2'"
-alias diary="nvim -c ':VimwikiMakeDiaryNote 2'"
 alias :q="exit" # teehee
 
 # if Eza installed, use that instead of `ls`

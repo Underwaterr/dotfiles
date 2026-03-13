@@ -10,13 +10,41 @@ config() {
 }
 
 # `wiki` takes you to the first wiki
-# `wiki 1` takes you to the second, etc.
+# `wiki 2` takes you to the second, etc.
 wiki() {
   nvim -c :VimwikiIndex"$1" 
+}
+
+todo() {
+  nvim -c ':VimwikiMakeDiaryNote 2'
 }
 
 lazy() {
   git add -A;
   git commit --allow-empty-message -m "";
   git push origin main
+}
+
+morning() {
+  TZ=America/New_York
+  local file="$HOME/apps/vimwiki/morning-pages/$(date +%Y-%m-%d).wiki"
+  if [[ ! -f "$file" ]]; then
+    printf '%s\n\n\n' "$(date +'%Y-%m-%d')" > "$file"
+  fi
+  # run NeoVim on insert mode at the end of the file
+  nvim '+' -c 'startinsert' -c 'TimerStart 10m Morning' "$file"
+}
+
+# Checks if we really want to shut down if we're inside an SSH session
+# (to avoid accidentally turning off the wrong computer!)
+shutdown() {
+  if [[ -n "$SSH_CONNECTION" || -n "$SSH_TTY" ]]; then
+    echo "⚠  You are in an SSH session on: $(hostname)"
+    read -rp "Shut down this REMOTE machine? Type 'yes' to confirm: " confirm
+    if [[ "$confirm" != "yes" ]]; then
+      echo "Shutdown aborted."
+      return 1
+    fi
+  fi
+  command sudo /sbin/shutdown "$@"
 }

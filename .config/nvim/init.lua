@@ -92,6 +92,9 @@ vim.call('plug#begin')
   Plug('saghen/blink.cmp')                      -- autocomplete 😱
   Plug('lifepillar/pgsql.vim')                  -- uPostgreSQL
   Plug 'vimwiki/vimwiki'                        -- VimWiki
+
+  -- Pomodoro timer for Morning Pages
+  Plug 'epwalsh/pomo.nvim'
 vim.call('plug#end')
 
 
@@ -294,11 +297,31 @@ vim.keymap.set("n", "sN", vim.diagnostic.goto_prev)
 
 
 -- VimWiki
+-- https://vimwiki.github.io/
 vim.g.vimwiki_list = {
-  { path = "~/apps/vimwiki/database/" }, 
-  { path = "~/apps/vimwiki/book/" }
+  --{ path = "~/apps/vimwiki/database/" }, 
+  --{ path = "~/apps/vimwiki/book/" },
+    { path = "~/apps/vimwiki/database/" },
+    { path = "~/apps/vimwiki/" },
 }
 
+-- triggered when making a new diary page, `:VimwikiMakeDiaryNote`
+vim.api.nvim_create_autocmd("BufNewFile", {
+  pattern = vim.fn.expand("~") .. "/apps/vimwiki/diary/*.wiki",
+  callback = function()
+    vim.cmd("0r ~/apps/vimwiki/template")
+    vim.cmd("%s/%date%/" .. os.date("%Y-%m-%d") .. "/ge")
+  end,
+})
+
+
+-- Pomo
+-- https://github.com/epwalsh/pomo.nvim
+require("pomo").setup({
+  session_minutes = 1,
+  break_minutes = 0,
+})
 
 -- idk why I gotta set this explicity, but I do!
+-- otherwise Markdown really, really wants tabs to be 4 spaces
 vim.cmd('autocmd Filetype markdown setlocal shiftwidth=2')
