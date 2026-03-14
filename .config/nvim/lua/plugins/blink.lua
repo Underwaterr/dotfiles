@@ -1,4 +1,8 @@
 require('blink.cmp').setup({
+  enabled = function()
+    local disabled_filetypes = { markdown = true, vimwiki = true }
+    return not disabled_filetypes[vim.bo.filetype]
+  end,
   fuzzy = {
     implementation = 'lua'
   },
