@@ -1,0 +1,21 @@
+require('nvim-treesitter').setup({
+  ensure_installed = {
+    'astro',
+    'css',
+    'html',
+    'javascript',
+    'jsdoc',
+    'json',
+    'lua',
+    'markdown',
+    'markdown_inline',
+    'python',
+    'rust',
+    'sql',
+    'typescript',
+    'tsx',
+    'vim',
+    'vimdoc',
+    'yaml',
+  }
+})
