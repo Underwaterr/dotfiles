@@ -24,4 +24,8 @@ vim.call('plug#begin')
   -- (will be obsolete once the native treesitter can load parsers
   Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
   
+
+  -- stop Vimwiki from treating every markdown file as a wiki
+  vim.g.vimwiki_global_ext = 0 
+
 vim.call('plug#end')
