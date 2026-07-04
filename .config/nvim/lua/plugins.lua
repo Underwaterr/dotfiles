@@ -16,6 +16,7 @@ vim.call('plug#begin')
   Plug('mason-org/mason.nvim')                  -- LSP management
   --Plug('folke/trouble.nvim')                  -- LSP sidebars, etc 
   Plug('pmizio/typescript-tools.nvim')          -- TypeScript LSP, not on Mason
+  Plug 'saghen/blink.lib'
   Plug('saghen/blink.cmp')                      -- autocomplete 😱
   Plug('lifepillar/pgsql.vim')                  -- uPostgreSQL
   Plug('vimwiki/vimwiki')                       -- VimWiki
