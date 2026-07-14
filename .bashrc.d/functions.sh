@@ -48,3 +48,12 @@ shutdown() {
   fi
   command sudo /sbin/shutdown "$@"
 }
+
+# handles both macOS and Linux
+open() {
+  if command -v xdg-open >/dev/null 2>&1; then
+    xdg-open "$@"
+  else
+    command open "$@"
+  fi
+}
