@@ -11,7 +11,7 @@ local mode_map = {
 
 require('lualine').setup({
 	options = {
-		theme = 'dracula',                  -- use Dracula theme!
+		theme = 'dracula-nvim',
 		disabled_filetypes = { 'NvimTree' } -- don't show lualine in the file explorer!
 	},
 	sections = {

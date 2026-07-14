@@ -1,3 +1,6 @@
+-- set leader
+vim.g.mapleader = ';'
+
 -- disable `netrw`
 -- (do this early to avoid race conditions with `nvim-tree`)
 vim.g.loaded_netrw = 1
@@ -35,14 +38,19 @@ vim.keymap.set('n', 'sp', ":set spell!<CR>")  -- run spell check with 'sp'
 vim.keymap.set('n', 'sP', "1z=")              -- replace word with 'sP'
 
 -- code folding
---set fillchars=fold:\
+vim.o.foldmethod = 'expr'
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
+vim.o.foldtext = ''
 --" toggle folds with zz
 vim.keymap.set('n', 'zz', "za")
+-- don't start w/ anything folded tho
+vim.o.foldlevelstart = 99
+vim.o.foldlevel = 99
+
+--set fillchars=fold:\
 -- turn on code folding (disabled because we are using UFO)
 -- vim.o.foldmethod = 'indent'
 -- set foldmethod=syntax
--- don't start w/ anything folded tho
-vim.o.foldlevelstart = 99
 
 -- Shift+Esc to enter Visual Block Mode
 vim.keymap.set('n', '<S-Esc>', '<C-v>', { desc = 'Visual Block Mode' })
@@ -50,8 +58,6 @@ vim.keymap.set('n', '<S-Esc>', '<C-v>', { desc = 'Visual Block Mode' })
 -- Use Postgres syntax for SQL files
 vim.g.sql_type_default = 'pgsql'
 
--- set leader
-vim.g.mapleader = ';'
 
 -- turn off automatic comment insertion
 vim.cmd('autocmd FileType * setlocal formatoptions-=cro')
@@ -146,11 +152,8 @@ vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufReadPost' }, {
   callback = function() require('lint').try_lint() end,
 })
 
-
--- idk why I gotta set this explicity, but I do!
--- otherwise Markdown really, really wants tabs to be 4 spaces
-vim.cmd('autocmd Filetype markdown setlocal shiftwidth=2')
-
+-- don't reset whitespace settings for Markdown files
+vim.g.markdown_recommended_style = 0
 
 vim.treesitter.language.register('markdown', 'vimwiki')
 vim.g.markdown_fenced_languages = {'html', 'python', 'lua', 'vim', 'typescript', 'javascript'}
