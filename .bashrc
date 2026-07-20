@@ -15,11 +15,6 @@ elif [ $HOSTNAME == 'garfield-solutions' ]; then PS1_EMOJI='😼🧸'
 elif [ $HOSTNAME == 'rocky'              ]; then PS1_EMOJI='🪨'
 fi
 
-# Are we running macOS (Darwin) or Linux?
-case "$OSTYPE" in
-  linux*)  IS_LINUX=1 ;;
-  darwin*) IS_MACOS=1 ;;
-esac
 
 # Our prompt is `emoji pair` then the current working directory
 export PS1="$PS1_EMOJI \[\e[32m\]\w\[\e[m\] "
@@ -46,6 +41,17 @@ set -o noclobber
 # Extended Globbing operators
 shopt -s extglob
 
+
+# Are we running macOS (Darwin) or Linux?
+case "$OSTYPE" in
+  linux*)  IS_LINUX=1 ;;
+  darwin*) IS_MACOS=1 ;;
+esac
+
+# Mac-specific setup
+if [[ -n "$IS_MACOS" ]]; then
+  HOMEBREW_NO_ENV_HINTS=1
+fi
 
 # Source all scripts in ~/.bashrc.d/
 if [ -d "$HOME/.bashrc.d" ]; then
