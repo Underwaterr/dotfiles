@@ -12,7 +12,9 @@ elif [ $HOSTNAME == 'astro-alloy'        ]; then PS1_EMOJI="🌌🌠"
 elif [ $HOSTNAME == 'amphibia'           ]; then PS1_EMOJI='🐸⚔️'
 elif [ $HOSTNAME == 'gravity-falls'      ]; then PS1_EMOJI='🌲🌙'
 elif [ $HOSTNAME == 'garfield-solutions' ]; then PS1_EMOJI='😼🧸'
+elif [ $HOSTNAME == 'rocky'              ]; then PS1_EMOJI='🪨'
 fi
+
 
 # Our prompt is `emoji pair` then the current working directory
 export PS1="$PS1_EMOJI \[\e[32m\]\w\[\e[m\] "
@@ -40,6 +42,17 @@ set -o noclobber
 shopt -s extglob
 
 
+# Are we running macOS (Darwin) or Linux?
+case "$OSTYPE" in
+  linux*)  IS_LINUX=1 ;;
+  darwin*) IS_MACOS=1 ;;
+esac
+
+# Mac-specific setup
+if [[ -n "$IS_MACOS" ]]; then
+  HOMEBREW_NO_ENV_HINTS=1
+fi
+
 # Source all scripts in ~/.bashrc.d/
 if [ -d "$HOME/.bashrc.d" ]; then
     for script in "$HOME/.bashrc.d/"*; do
@@ -51,14 +64,23 @@ fi
 
 
 # Use bash-completion, if available, and avoid double-sourcing
-[[ $PS1 &&
-  ! ${BASH_COMPLETION_VERSINFO:-} &&
-  -f /usr/share/bash-completion/bash_completion ]] &&
-    . /usr/share/bash-completion/bash_completion
+if [[ -n "$IS_LINUX" ]]; then
+  [[ $PS1 &&
+    ! ${BASH_COMPLETION_VERSINFO:-} &&
+    -f /usr/share/bash-completion/bash_completion ]] &&
+      . /usr/share/bash-completion/bash_completion
+elif [[ -n "$IS_MACOS" ]]; then
+  [[ -r "/opt/homebrew/etc/profile.d/bash_completion.sh" ]] && \
+      . "/opt/homebrew/etc/profile.d/bash_completion.sh"
+fi
 
+# setup mise if installed
+if command -v mise >/dev/null 2>&1; 
+then eval "$(mise activate bash)"; fi
 
 # All good! nyan!
 if [ $HOSTNAME == 'garfield-solutions' ]; then cat ~/.garf;
-elif [ $TERM = "xterm-kitty" ]; then kitty +kitten icat --align left ~/.splash.png && echo -e '\n';
+elif [ $TERM = "xterm-kitty" ]; then \
+  [ -f .splash.png ] && kitty +kitten icat --align left ~/.splash.png && echo -e '\n';
 else echo "Meow 🌈🐱✨";
 fi;

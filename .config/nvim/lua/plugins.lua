@@ -1,31 +1,24 @@
-local Plug = vim.fn['plug#']
+-- shorten GitHub URLs
+local gh = function(x) return 'https://github.com/' .. x end
 
-vim.call('plug#begin')
-  Plug('nvim-lua/plenary.nvim')                 -- lua utilities
-  Plug('kevinhwang91/promise-async')            -- lua utilities 
-  Plug('nvim-tree/nvim-web-devicons')           -- nerd fonts
-  Plug('nvim-tree/nvim-tree.lua')               -- file explorer
-  Plug('mfussenegger/nvim-dap')                 -- DAP
-  Plug('dracula/vim', { ['as'] = 'dracula' })   -- theme
-  Plug('nvim-lualine/lualine.nvim')             -- status bar
-  Plug('nvim-telescope/telescope.nvim')         -- file search
-  Plug('kevinhwang91/nvim-ufo')                 -- code folding
-  Plug('mason-org/mason.nvim')                  -- LSP management
-  Plug('pmizio/typescript-tools.nvim')          -- TypeScript LSP, not on Mason
-  Plug('saghen/blink.cmp')                      -- autocomplete 😱
-  Plug('lifepillar/pgsql.vim')                  -- uPostgreSQL
-  Plug('vimwiki/vimwiki')                       -- VimWiki
-  Plug('epwalsh/pomo.nvim')			                -- pomodoro timer
+vim.pack.add({
+  gh('nvim-lua/plenary.nvim'),          -- lua utilities (telescope dependency)
+  gh('kevinhwang91/promise-async'),     -- ufo dependency
+  gh('nvim-tree/nvim-web-devicons'),    -- nerd fonts
+  gh('nvim-tree/nvim-tree.lua'),        -- file explorer
+  gh('Mofiqul/dracula.nvim'),           -- dracula theme
+  gh('nvim-lualine/lualine.nvim'),      -- status bar
+  gh('nvim-telescope/telescope.nvim'),  -- file search
+  gh('kevinhwang91/nvim-ufo'),          -- code folding
+  gh('mason-org/mason.nvim'),           -- LSP management
+  gh('saghen/blink.lib'),               -- required by blink.cmp v2
+  gh('saghen/blink.cmp'),               -- autocomplete
+  gh('lifepillar/pgsql.vim'),           -- PostgreSQL syntax
+  gh('vimwiki/vimwiki'),                -- VimWiki
+  gh('epwalsh/pomo.nvim'),              -- pomodoro timer
+  gh('lewis6991/gitsigns.nvim'),        -- git gutter
 
-  Plug('OXY2DEV/markview.nvim')                 -- markdown
-  Plug('mfussenegger/nvim-lint')                -- linting??
-
-  -- Treesitter
-  -- (will be obsolete once the native treesitter can load parsers
-  Plug('nvim-treesitter/nvim-treesitter', { ['do'] = ':TSUpdate' })
-  
-
-  -- stop Vimwiki from treating every markdown file as a wiki
-  vim.g.vimwiki_global_ext = 0 
-
-vim.call('plug#end')
+  -- MARKDOWN!!
+  gh('OXY2DEV/markview.nvim'),
+  gh('mfussenegger/nvim-lint')
+})

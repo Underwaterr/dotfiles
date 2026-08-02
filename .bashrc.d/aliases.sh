@@ -1,8 +1,8 @@
 # Aliases
 
-# `yank` and `splat` for copying and pasting
-alias yank='xclip -selection clipboard'
-alias splat='xclip -selection clipboard -o'
+# copy and paste
+alias yank='kitten clipboard' # this will hang if `stdin` is empty; ctrl+D to escape
+alias splat='kitten clipboard --get-clipboard < /dev/null'
 
 # CD Changer
 alias ..="cd .."
@@ -25,9 +25,11 @@ fi
 if [ $TERM == 'xterm-kitty' ]; then alias ssh="kitty +kitten ssh"; fi
 
 alias bat='batcat --theme="base16"'
+alias clear='clear && printf "\033[3J"'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.git --work-tree=$HOME'
 alias open="xdg-open"
+#alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias server="python3 -m http.server $1"
 alias tree="tree -I node_modules -I __pycache__ --dirsfirst "
 alias weather='curl -s wttr.in/Philadelphia?u | head -n 17'
