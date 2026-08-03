@@ -79,11 +79,10 @@ then eval "$(mise activate bash)"; fi
 
 
 # Let's get weird!!
+# [[ $- == *i* ]] && [[ -r ~/dictionary.txt ]] && cowsay -f ~/.garf.cow $(shuf -n 1 ~/dictionary.txt) 
 
-# All good! nyan!
-#if [ $HOSTNAME == 'garfield-solutions' ]; then cat ~/.garf;
-[[ $- == *i* ]] && [[ -r ~/dictionary.txt ]] && cowsay -f ~/.garf.cow $(shuf -n 1 ~/dictionary.txt) 
-#if [ $TERM = "xterm-kitty" ]; then \
-#  [ -f .splash.png ] && kitty +kitten icat --align left ~/.splash.png && echo -e '\n';
-#else echo "Meow 🌈🐱✨";
-#fi;
+if [ $HOSTNAME == 'garfield-solutions' ]; then cat ~/.fun/garf;
+elif [ $TERM = "xterm-kitty" ]; then \
+  [ -f ~/.fun/splash.png ] && kitty +kitten icat --align left ~/.fun/splash.png && echo -e '\n';
+else echo "Meow 🌈🐱✨";
+fi;
