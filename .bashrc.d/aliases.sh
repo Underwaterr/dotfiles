@@ -1,8 +1,8 @@
 # Aliases
 
 # `yank` and `splat` for copying and pasting
-alias yank='xclip -selection clipboard'
-alias splat='xclip -selection clipboard -o'
+alias yank='xsel --clipboard --input'
+alias splat='xsel --clipboard --output'
 
 # CD Changer
 alias ..="cd .."
@@ -12,6 +12,7 @@ alias .....="cd ../../../.."
 
 # Vim stuff
 alias v="nvim"
+alias vim="nvim"
 alias vv="view -M" # for read-only
 alias book="nvim -c ':VimwikiIndex 2'"
 alias :q="exit" # teehee
@@ -24,9 +25,9 @@ fi
 # if using kitty terminal, use their "kitten" to fix SSH
 if [ $TERM == 'xterm-kitty' ]; then alias ssh="kitty +kitten ssh"; fi
 
-alias bat='batcat --theme="base16"'
+alias bat='batcat --theme="base16" --style=plain'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles/.git --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias open="xdg-open"
 alias server="python3 -m http.server $1"
 alias tree="tree -I node_modules -I __pycache__ --dirsfirst "

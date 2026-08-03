@@ -5,5 +5,3 @@
 	email = git@example.com
 [diff]
 	tool = vimdiff
-[credential]
-	helper = store

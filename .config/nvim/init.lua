@@ -2,15 +2,12 @@ require('options')
 
 require('plugins')
 require('plugins.dracula')
-require('plugins.telescope')
 require('plugins.lualine')
 require('plugins.nvim-tree')
 require('plugins.mason')
 
-require('plugins.ufo')
-require('plugins.blink')
-require('plugins.markview')
 require('plugins.treesitter')
+require('plugins.trouble')
 
 require('lsp.antlers')
 require('lsp.astro')
@@ -19,6 +16,8 @@ require('lsp.lua')
 require('lsp.markdown')
 require('lsp.postgres')
 require('lsp.typescript')
+require('lsp.vue')
+require('lsp.pug')
 
 
 -- LSP error messages
@@ -38,29 +37,9 @@ vim.keymap.set("n", "sd", diag, { desc = "Toggle underlining diagnostics" } )
 vim.keymap.set("n", "sn", function() vim.diagnostic.jump({ count = 1 }) end)
 vim.keymap.set("n", "sN", function() vim.diagnostic.jump({ count = -1 }) end)
 
-
--- linting
-require('lint').linters_by_ft = {
-  markdown = { 'markdownlint-cli2' },
-  vimwiki = { 'markdownlint-cli2' }
-}
-
-vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufReadPost' }, {
-  pattern = { '*.md', '*.wiki' },
-  callback = function() require('lint').try_lint() end,
-})
-
-
-vim.api.nvim_create_autocmd('FileType', {
-  callback = function()
-    pcall(vim.treesitter.start)
-  end,
-})
-
-
 -- idk why I gotta set this explicity, but I do!
 -- otherwise Markdown really, really wants tabs to be 4 spaces
 vim.cmd('autocmd Filetype markdown setlocal shiftwidth=2')
 
-vim.treesitter.language.register('markdown', 'vimwiki')
+--vim.treesitter.language.register('markdown', 'vimwiki')
 -- vim.g.markdown_fenced_languages = {'html', 'python', 'lua', 'vim', 'typescript', 'javascript'}

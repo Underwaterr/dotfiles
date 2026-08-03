@@ -9,6 +9,7 @@ require('nvim-treesitter').setup({
     'lua',
     'markdown',
     'markdown_inline',
+    'php',
     'python',
     'rust',
     'sql',
@@ -16,6 +17,16 @@ require('nvim-treesitter').setup({
     'tsx',
     'vim',
     'vimdoc',
+    'vue',
     'yaml',
+    'pug'
   }
 })
+
+vim.api.nvim_create_autocmd('FileType', {
+  callback = function()
+    pcall(vim.treesitter.start)
+  end,
+})
+
+vim.o.foldexpr = 'v:lua.vim.treesitter.foldexpr()'
