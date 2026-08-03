@@ -41,9 +41,7 @@ vim.keymap.set('n', 'sP', "1z=")              -- replace word with 'sP'
 --set fillchars=fold:\
 --" toggle folds with zz
 vim.keymap.set('n', 'zz', "za")
--- turn on code folding (disabled because we are using UFO)
--- vim.o.foldmethod = 'indent'
--- set foldmethod=syntax
+vim.o.foldmethod = 'expr'
 -- don't start w/ anything folded tho
 vim.o.foldlevelstart = 99
 
@@ -71,4 +69,3 @@ vim.keymap.set('n', 'sl', "<C-w>l")            -- go to split right
 vim.keymap.set('n', 'st', ":tabnew<CR>")        -- new tab
 vim.keymap.set('n', '<Tab>', ":tabnext<CR>")   -- go to next tab
 vim.keymap.set('n', '<S-Tab>', ":tabprev<CR>") -- go to previous tab
-

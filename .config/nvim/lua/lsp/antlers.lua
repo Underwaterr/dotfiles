@@ -1,4 +1,6 @@
-vim.filetype.add({ pattern = { ['.*/*.antlers.html'] = 'antlers' } })
+vim.filetype.add({ 
+  extension = { ['antlers.html'] = 'antlers' } 
+})
 
 vim.lsp.config('antlersls', {
   cmd = { 'antlersls', '--stdio' },
