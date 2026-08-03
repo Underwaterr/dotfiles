@@ -4,5 +4,5 @@
 #./"${1:-main}"
 
 clear
-kitty +kitten icat ~/ubuntu/Pictures/ferris.png
+kitty +kitten icat ~/.fun/ferris.png
 cargo run --quiet
