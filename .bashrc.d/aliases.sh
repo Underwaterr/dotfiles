@@ -1,8 +1,8 @@
 # Aliases
 
-# `yank` and `splat` for copying and pasting
-alias yank='xsel --clipboard --input'
-alias splat='xsel --clipboard --output'
+# copy and paste
+alias yank='kitten clipboard' # this will hang if `stdin` is empty; ctrl+D to escape
+alias splat='kitten clipboard --get-clipboard < /dev/null'
 
 # CD Changer
 alias ..="cd .."
@@ -26,6 +26,7 @@ fi
 if [ $TERM == 'xterm-kitty' ]; then alias ssh="kitty +kitten ssh"; fi
 
 alias bat='batcat --theme="base16" --style=plain'
+alias clear='clear && printf "\033[3J"'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias open="xdg-open"

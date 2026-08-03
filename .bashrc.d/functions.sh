@@ -27,7 +27,7 @@ lazy() {
 
 morning() {
   TZ=America/New_York
-  local file="$HOME/apps/vimwiki/morning-pages/$(date +%Y-%m-%d).wiki"
+  local file="$HOME/apps/wiki/morning-pages/$(date +%Y-%m-%d).wiki"
   if [[ ! -f "$file" ]]; then
     printf '%s\n\n\n' "$(date +'%Y-%m-%d')" > "$file"
   fi
@@ -47,4 +47,13 @@ shutdown() {
     fi
   fi
   command sudo /sbin/shutdown "$@"
+}
+
+# handles both macOS and Linux
+open() {
+  if command -v xdg-open >/dev/null 2>&1; then
+    xdg-open "$@"
+  else
+    command open "$@"
+  fi
 }
