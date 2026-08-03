@@ -6,8 +6,8 @@ require('plugins.nvim-tree')
 require('plugins.mason')
 require('plugins.vimwiki')
 
-require('plugins.treesitter')
-require('plugins.trouble')
+--require('plugins.treesitter')
+--require('plugins.trouble')
 --require('plugins.ufo')
 --require('plugins.blink')
 
