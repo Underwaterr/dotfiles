@@ -1,8 +1,8 @@
 [init]
 	defaultBranch = main
 [user]
-	name = t
-	email = git@example.com
+	name = Underwaterr
+	email = 3163892+Underwaterr@users.noreply.github.com
 [diff]
 	tool = vimdiff
 
@@ -14,3 +14,6 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+[pull]
+	ff = only
+	rebase = false
