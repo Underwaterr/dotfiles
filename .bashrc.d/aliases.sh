@@ -27,7 +27,7 @@ if [ $TERM == 'xterm-kitty' ]; then alias ssh="kitty +kitten ssh"; fi
 alias bat='batcat --theme="base16"'
 alias clear='clear && printf "\033[3J"'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
-alias dotfiles='/usr/bin/git --git-dir=$HOME/.git --work-tree=$HOME'
+alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias open="xdg-open"
 #alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias server="python3 -m http.server $1"

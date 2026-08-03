@@ -117,15 +117,6 @@ vim.keymap.set("n", "sn", function() vim.diagnostic.jump({ count = 1 }) end)
 vim.keymap.set("n", "sN", function() vim.diagnostic.jump({ count = -1 }) end)
 
 
--- VimWiki
--- https://vimwiki.github.io/
-vim.g.vimwiki_list = {
-  --{ path = "~/apps/vimwiki/database/" }, 
-  --{ path = "~/apps/vimwiki/book/" },
-    { path = "~/apps/vimwiki/database/" },
-    { path = "~/apps/vimwiki/" },
-}
-
 -- triggered when making a new diary page, `:VimwikiMakeDiaryNote`
 vim.api.nvim_create_autocmd("BufNewFile", {
   pattern = vim.fn.expand("~") .. "/apps/vimwiki/diary/*.wiki",
@@ -135,19 +126,6 @@ vim.api.nvim_create_autocmd("BufNewFile", {
   end,
 })
 
-
--- Pomo
--- https://github.com/epwalsh/pomo.nvim
-require("pomo").setup({
-  session_minutes = 1,
-  break_minutes = 0,
-})
---
--- linting
-require('lint').linters_by_ft = {
-  markdown = { 'markdownlint' },
-  vimwiki = { 'markdownlint' },
-}
 
 vim.api.nvim_create_autocmd({ 'BufWritePost', 'BufReadPost' }, {
   pattern = { '*.md', '*.wiki' },
