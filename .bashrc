@@ -41,7 +41,6 @@ set -o noclobber
 # Extended Globbing operators
 shopt -s extglob
 
-
 # Are we running macOS (Darwin) or Linux?
 case "$OSTYPE" in
   linux*)  IS_LINUX=1 ;;
@@ -51,17 +50,17 @@ esac
 # Mac-specific setup
 if [[ -n "$IS_MACOS" ]]; then
   HOMEBREW_NO_ENV_HINTS=1
+  HOMEBREW_NO_AUTO_UPDATE=1
 fi
 
 # Source all scripts in ~/.bashrc.d/
 if [ -d "$HOME/.bashrc.d" ]; then
-    for script in "$HOME/.bashrc.d/"*; do
-        if [ -f "$script" ] && [ -r "$script" ]; then
-            source "$script"
-        fi
-    done
+  for script in "$HOME/.bashrc.d/"*; do
+    if [ -f "$script" ] && [ -r "$script" ]; then
+      source "$script"
+    fi
+  done
 fi
-
 
 # Use bash-completion, if available, and avoid double-sourcing
 if [[ -n "$IS_LINUX" ]]; then
