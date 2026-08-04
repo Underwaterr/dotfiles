@@ -1,8 +1,10 @@
 [init]
 	defaultBranch = main
+
 [user]
 	name = Underwaterr
 	email = 3163892+Underwaterr@users.noreply.github.com
+
 [diff]
 	tool = vimdiff
 
@@ -14,6 +16,10 @@
 	clean = git-lfs clean -- %f
 	smudge = git-lfs smudge -- %f
 	process = git-lfs filter-process
+
 [pull]
 	ff = only
 	rebase = false
+
+[core]
+	excludesFile = ~/.gitignore_global
