@@ -27,6 +27,7 @@ alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
 alias open="xdg-open"
 alias server="python3 -m http.server $1"
 alias tree="tree -I node_modules -I __pycache__ --dirsfirst "
+alias unzip="tar -xvf"
 alias weather='curl -s wttr.in/Philadelphia?u | head -n 17'
 
 # ask before overwriting a file!
