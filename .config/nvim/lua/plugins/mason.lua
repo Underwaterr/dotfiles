@@ -2,3 +2,17 @@
 -- this is how the bare cmd names in the LSP files resolve without absolute paths
 -- Servers installed outside Mason need to be on the shell PATH independently
 require("mason").setup({})
+
+require('mason-tool-installer').setup({
+  ensure_installed = {
+    'antlers-language-server',
+    'astro-language-server',
+    'jinja-lsp',
+    'lua-language-server',
+    'postgres-language-server',
+    'pug-lsp',
+    'tree-sitter-cli',
+    'tsgo',
+    'vue-language-server'
+  }
+})

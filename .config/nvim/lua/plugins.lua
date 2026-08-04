@@ -10,15 +10,16 @@ vim.g.vimwiki_list = {
 }
 
 vim.pack.add({
-  gh('neovim/nvim-lspconfig'),          -- LSP server definitions
-  gh('nvim-treesitter/nvim-treesitter'),-- parsers + queries
-  gh('nvim-tree/nvim-web-devicons'),    -- nerd fonts
-  gh('nvim-tree/nvim-tree.lua'),        -- file explorer
-  gh('Mofiqul/dracula.nvim'),           -- dracula theme
-  gh('nvim-lualine/lualine.nvim'),      -- status bar
-  gh('mason-org/mason.nvim'),           -- package manager 
-  gh('lifepillar/pgsql.vim'),           -- PostgreSQL syntax
-  gh('vimwiki/vimwiki'),                -- VimWiki
-  gh('lewis6991/gitsigns.nvim'),        -- git buffer integration
-  gh('OXY2DEV/markview.nvim'),          -- rendering markdown
+  gh('neovim/nvim-lspconfig'),                      -- LSP server definitions
+  gh('nvim-treesitter/nvim-treesitter'),            -- parsers + queries
+  gh('nvim-tree/nvim-web-devicons'),                -- nerd fonts
+  gh('nvim-tree/nvim-tree.lua'),                    -- file explorer
+  gh('Mofiqul/dracula.nvim'),                       -- dracula theme
+  gh('nvim-lualine/lualine.nvim'),                  -- status bar
+  gh('mason-org/mason.nvim'),                       -- package manager 
+  gh('WhoIsSethDaniel/mason-tool-installer.nvim'),  -- package manager manager
+  gh('lifepillar/pgsql.vim'),                       -- PostgreSQL syntax
+  gh('vimwiki/vimwiki'),                            -- VimWiki
+  gh('lewis6991/gitsigns.nvim'),                    -- git buffer integration
+  gh('OXY2DEV/markview.nvim'),                      -- rendering markdown
 })
