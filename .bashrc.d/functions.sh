@@ -15,10 +15,6 @@ wiki() {
   nvim -c :VimwikiIndex"$1" 
 }
 
-todo() {
-  nvim -c ':VimwikiMakeDiaryNote 2'
-}
-
 lazy() {
   git add -A;
   git commit --allow-empty-message -m "";
