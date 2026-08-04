@@ -81,7 +81,7 @@ then eval "$(mise activate bash)"; fi
 # Let's get weird!!
 # [[ $- == *i* ]] && [[ -r ~/dictionary.txt ]] && cowsay -f ~/.garf.cow $(shuf -n 1 ~/dictionary.txt) 
 
-if [ $HOSTNAME == 'garfield-solutions' ]; then cat ~/.fun/garf;
+if [ $HOSTNAME == 'garfield-solutions' ]; then cat ~/.fun/garf.txt;
 elif [ $TERM = "xterm-kitty" ]; then \
   [ -f ~/.fun/splash.png ] && kitty +kitten icat --align left ~/.fun/splash.png && echo -e '\n';
 else echo "Meow 🌈🐱✨";
