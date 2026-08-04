@@ -40,10 +40,6 @@
       "rev": "16584d7a1f2c528560a646a63625c6731a72c8c7",
       "src": "https://github.com/lifepillar/pgsql.vim"
     },
-    "pomo.nvim": {
-      "rev": "aa8decc421d89be0f10b1fc6a602cdd269f350ff",
-      "src": "https://github.com/epwalsh/pomo.nvim"
-    },
     "vimwiki": {
       "rev": "a54a3002e229c4b43d69ced170ff77663a5b2c40",
       "src": "https://github.com/vimwiki/vimwiki"
