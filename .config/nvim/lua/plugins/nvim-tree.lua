@@ -8,7 +8,7 @@ local function get_nvim_tree_mappings(bufnr)
 		}
   end
 
-  local function toggle_both_filters()
+  local function toggle_filters()
     api.tree.toggle_gitignore_filter()
     api.tree.toggle_hidden_filter()
     api.tree.toggle_custom_filter()
@@ -20,19 +20,19 @@ local function get_nvim_tree_mappings(bufnr)
     api.tree.change_root_to_parent()
   end
 
-	vim.keymap.set('n', '<BS>', api.tree.close, 						  		opts('Close'))
-	vim.keymap.set('n', '<CR>', api.node.open.edit,               opts('Open'))
-	vim.keymap.set('n', '?', 		api.tree.toggle_help, 			  		opts('Help'))
-	vim.keymap.set('n', 'R', 		api.tree.reload, 					        opts('Refresh'))
-	vim.keymap.set('n', 'a', 		api.fs.create, 									  opts('Create'))
-	vim.keymap.set('n', 'C',    api.fs.copy.node,                 opts('Copy'))
-	vim.keymap.set('n', 'P',    api.fs.paste,                     opts('Paste'))
-	vim.keymap.set('n', 'd', 		api.fs.trash, 						  		  opts('Trash'))
-	vim.keymap.set('n', 'h', 		toggle_both_filters,              opts('Toggle Hidden'))
-	vim.keymap.set('n', 'm', 		api.fs.rename_full, 				  		opts('Move'))
-	vim.keymap.set('n', 'p', 		api.node.open.preview, 			  		opts('Preview'))
-	vim.keymap.set('n', 'r', 		api.fs.rename, 							  		opts('Rename'))
-	vim.keymap.set('n', 'u', 		go_up,                            opts('Up'))
+	vim.keymap.set('n', '<BS>', api.tree.close, 				opts('Close'))
+	vim.keymap.set('n', '<CR>', api.node.open.edit,     opts('Open'))
+	vim.keymap.set('n', '?', 		api.tree.toggle_help, 	opts('Help'))
+	vim.keymap.set('n', 'R', 		api.tree.reload, 				opts('Refresh'))
+	vim.keymap.set('n', 'a', 		api.fs.create, 					opts('Create'))
+	vim.keymap.set('n', 'C',    api.fs.copy.node,       opts('Copy'))
+	vim.keymap.set('n', 'P',    api.fs.paste,           opts('Paste'))
+	vim.keymap.set('n', 'd', 		api.fs.trash, 					opts('Trash'))
+	vim.keymap.set('n', 'h', 		toggle_filters,         opts('Toggle Hidden'))
+	vim.keymap.set('n', 'm', 		api.fs.rename_full, 		opts('Move'))
+	vim.keymap.set('n', 'p', 		api.node.open.preview, 	opts('Preview'))
+	vim.keymap.set('n', 'r', 		api.fs.rename, 					opts('Rename'))
+	vim.keymap.set('n', 'u', 		go_up,                  opts('Up'))
 end
 
 require("nvim-tree").setup({
@@ -43,17 +43,16 @@ require("nvim-tree").setup({
     icons = { git_placement = 'signcolumn' }
   },
   trash = { cmd = 'trash' },
+	sync_root_with_cwd = true,
+	respect_buf_cwd = false,
 	update_focused_file = {
 		enable = true,
-		update_root = { enable = true },
+		update_root = { enable = false },
 	},
-	sync_root_with_cwd = true,
-	respect_buf_cwd = true,
 	reload_on_bufenter = true,
 	filters = {
 		dotfiles = true,
-		git_ignored = true,
-    custom = { ".git" }                   -- don't show `.git/` or `.gitignore`
+		git_ignored = true
 	},
 	actions = {
 		open_file = {

@@ -3,6 +3,9 @@
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 
+-- set leader key
+vim.g.mapleader = ';'
+
 -- teeny tiny tabs
 vim.o.tabstop = 2         -- tabs are two spaces wide
 vim.o.shiftwidth = 2
@@ -28,27 +31,20 @@ vim.o.scrolloff = 8         -- How many lines you see above and below cursor
 vim.o.winborder = 'rounded' -- show windows with rounded corners
 vim.o.showmode = false      -- hide the default "mode" since we show it in Lualine
 
--- set leader
-vim.g.mapleader = ';'
-
 -- spell check!
--- don't check for capitalization when doing spell check
-vim.o.spellcapcheck = ""
-vim.keymap.set('n', 'sp', ":set spell!<CR>")  -- run spell check with 'sp'
-vim.keymap.set('n', 'sP', "1z=")              -- replace word with 'sP'
+vim.o.spellcapcheck = ""                      -- don't check capitalization
+vim.keymap.set('n', 'sp', ":set spell!<CR>")  -- 'sp' enables spell check
+vim.keymap.set('n', 'sP', "1z=")              -- 'sP' tries to fix misspelled word
 
 -- code folding
---set fillchars=fold:\
---" toggle folds with zz
-vim.keymap.set('n', 'zz', "za")
-vim.o.foldmethod = 'expr'
--- don't start w/ anything folded tho
-vim.o.foldlevelstart = 99
+-- (`foldmethod`/`foldexpr` are set per-buffer in plugins/treesitter.lua)
+vim.o.foldlevelstart = 99       -- no folds to start!
+vim.keymap.set('n', 'zz', "za") -- toggle folding with `zz`
 
--- Shift+Esc to enter Visual Block Mode
+-- enter "Visual Block Mode" with <Shift+Esc>
 vim.keymap.set('n', '<S-Esc>', '<C-v>', { desc = 'Visual Block Mode' })
 
--- Use Postgres syntax for SQL files
+-- Assume Postgres syntax for SQL files
 vim.g.sql_type_default = 'pgsql'
 
 -- turn off automatic comment insertion
