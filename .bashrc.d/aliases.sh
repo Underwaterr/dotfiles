@@ -1,9 +1,5 @@
 # Aliases
 
-# copy and paste
-alias yank='kitten clipboard' # this will hang if `stdin` is empty; ctrl+D to escape
-alias splat='kitten clipboard --get-clipboard < /dev/null'
-
 # CD Changer
 alias ..="cd .."
 alias ...="cd ../.."
@@ -14,16 +10,15 @@ alias .....="cd ../../../.."
 alias v="nvim"
 alias vim="nvim"
 alias vv="view -M" # for read-only
-alias book="nvim -c ':VimwikiIndex 2'"
 alias :q="exit" # teehee
 
 # if Eza installed, use that instead of `ls`
 if command -v eza >/dev/null 2>&1
-then alias ls='eza -1 --icons --group-directories-first'
-fi
+then alias ls='eza -1 --icons --group-directories-first'; fi
 
 # if using kitty terminal, use their "kitten" to fix SSH
-if [ $TERM == 'xterm-kitty' ]; then alias ssh="kitty +kitten ssh"; fi
+if [ $TERM == 'xterm-kitty' ]
+then alias ssh="kitty +kitten ssh"; fi
 
 alias bat='batcat --theme="base16" --style=plain'
 alias clear='clear && printf "\033[3J"'

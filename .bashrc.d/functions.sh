@@ -28,9 +28,9 @@ lazy() {
 morning() {
   TZ=America/New_York
   local file="$HOME/apps/wiki/morning-pages/$(date +%Y-%m-%d).wiki"
-  if [[ ! -f "$file" ]]; then
-    printf '%s\n\n\n' "$(date +'%Y-%m-%d')" > "$file"
-  fi
+  if [[ ! -f "$file" ]]
+  then printf '%s\n\n\n' "$(date +'%Y-%m-%d')" > "$file"; fi
+
   # run NeoVim on insert mode at the end of the file
   nvim '+' -c 'startinsert' -c 'TimerStart 10m Morning' "$file"
 }
@@ -39,8 +39,8 @@ morning() {
 # (to avoid accidentally turning off the wrong computer!)
 shutdown() {
   if [[ -n "$SSH_CONNECTION" || -n "$SSH_TTY" ]]; then
-    echo "⚠  You are in an SSH session on: $(hostname)"
-    read -rp "Shut down this REMOTE machine? Type 'yes' to confirm: " confirm
+    echo "⚠ You are in an SSH session with $(hostname)"
+    read -rp "Shut down the remote machine? Type 'yes' to confirm: " confirm
     if [[ "$confirm" != "yes" ]]; then
       echo "Shutdown aborted."
       return 1
@@ -51,9 +51,8 @@ shutdown() {
 
 # handles both macOS and Linux
 open() {
-  if command -v xdg-open >/dev/null 2>&1; then
-    xdg-open "$@"
-  else
-    command open "$@"
+  if command -v xdg-open >/dev/null 2>&1; 
+  then xdg-open "$@"
+  else command open "$@"
   fi
 }
