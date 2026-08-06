@@ -32,9 +32,18 @@ vim.o.winborder = 'rounded' -- show windows with rounded corners
 vim.o.showmode = false      -- hide the default "mode" since we show it in Lualine
 
 -- spell check!
+vim.opt.spellfile = vim.fn.stdpath("config") .. "/vocabulary.utf-8.add"
 vim.o.spellcapcheck = ""                      -- don't check capitalization
 vim.keymap.set('n', 'sp', ":set spell!<CR>")  -- 'sp' enables spell check
 vim.keymap.set('n', 'sP', "1z=")              -- 'sP' tries to fix misspelled word
+
+-- automatically complile spellcheck file when edited
+vim.api.nvim_create_autocmd("BufWritePost", {
+  pattern = "*.add",
+  callback = function(args)
+    vim.cmd.mkspell({ args = { vim.fn.fnameescape(args.file) }, bang = true })
+  end,
+})
 
 -- code folding
 -- (`foldmethod`/`foldexpr` are set per-buffer in plugins/treesitter.lua)

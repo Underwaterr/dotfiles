@@ -15,6 +15,7 @@ require('lsp.jinja')
 require('lsp.lua')
 require('lsp.postgres')
 require('lsp.pug')
+require('lsp.terraform')
 require('lsp.typescript')
 require('lsp.vue')
 

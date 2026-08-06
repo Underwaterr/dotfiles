@@ -1,6 +1,7 @@
 require('nvim-treesitter').install({
   'astro',
   'css',
+  'hcl',
   'html',
   'javascript',
   'jsdoc',
@@ -13,6 +14,7 @@ require('nvim-treesitter').install({
   'python',
   'rust',
   'sql',
+  'terraform',
   'tsx',
   'typescript',
   'vim',
