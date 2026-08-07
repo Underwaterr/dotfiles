@@ -34,12 +34,16 @@ vim.o.showmode = false      -- hide the default "mode" since we show it in Luali
 -- spell check!
 vim.opt.spellfile = vim.fn.stdpath("config") .. "/vocabulary.utf-8.add"
 vim.o.spellcapcheck = ""                      -- don't check capitalization
-vim.keymap.set('n', 'sp', ":set spell!<CR>")  -- 'sp' enables spell check
-vim.keymap.set('n', 'sP', "1z=")              -- 'sP' tries to fix misspelled word
+vim.keymap.set('n', 'sp',  ":set spell!<CR>")  -- 'sp' enables spell check
+vim.keymap.set('n', 'sP',  "1z=")              -- 'sP' tries to fix misspelled word
+vim.keymap.set('n', 'sg',  "zg")               -- 'sg' adds a new "good" word
+vim.keymap.set('n', 'sb',  "zw")               -- 'sb' adds a new "bad" word
+vim.keymap.set('n', 'sug', "zug")              -- 'sug' to remove "good" word
+vim.keymap.set('n', 'sub', "zuw")              -- 'sug' to remove "bad" word
 
--- automatically complile spellcheck file when edited
+-- automatically complile spellcheck file on save
 vim.api.nvim_create_autocmd("BufWritePost", {
-  pattern = "*.add",
+  pattern = "vocabulary.utf-8.add",
   callback = function(args)
     vim.cmd.mkspell({ args = { vim.fn.fnameescape(args.file) }, bang = true })
   end,
