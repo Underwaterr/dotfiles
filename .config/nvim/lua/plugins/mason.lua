@@ -11,6 +11,7 @@ require('mason-tool-installer').setup({
     'lua-language-server',
     'postgres-language-server',
     'pug-lsp',
+    'terraform-ls',
     'tree-sitter-cli',
     'tsgo',
     'vue-language-server'

@@ -24,7 +24,6 @@ alias bat='batcat --theme="base16" --style=plain'
 alias clear='clear && printf "\033[3J"'
 alias clock='date +"%I:%M %p"; date "+%Y-%m-%d"'
 alias dotfiles='/usr/bin/git --git-dir=$HOME/.dotfiles --work-tree=$HOME'
-alias open="xdg-open"
 alias server="python3 -m http.server $1"
 alias tree="tree -I node_modules -I __pycache__ --dirsfirst "
 alias unzip="tar -xvf"
