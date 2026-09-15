@@ -1,6 +1,6 @@
 vim.g.vimwiki_list = {
   { path = "~/apps/wiki/database/" }, 
-  { path = "~/apps/wiki/morning-pages/" },
+  { path = "~/apps/wiki/commonplace/" },
   { path = "~/apps/wiki/story/" }
 }
 
@@ -12,3 +12,5 @@ vim.api.nvim_create_autocmd("BufNewFile", {
     vim.cmd("%s/%date%/" .. os.date("%Y-%m-%d") .. "/ge")
   end,
 })
+
+vim.treesitter.language.register('markdown', 'vimwiki')

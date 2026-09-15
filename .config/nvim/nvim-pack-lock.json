@@ -40,6 +40,10 @@
       "rev": "16584d7a1f2c528560a646a63625c6731a72c8c7",
       "src": "https://github.com/lifepillar/pgsql.vim"
     },
+    "render-markdown.nvim": {
+      "rev": "4663eb3ecd538bd5062628fb6d95bbe6bdca78f6",
+      "src": "https://github.com/MeanderingProgrammer/render-markdown.nvim"
+    },
     "vimwiki": {
       "rev": "a54a3002e229c4b43d69ced170ff77663a5b2c40",
       "src": "https://github.com/vimwiki/vimwiki"

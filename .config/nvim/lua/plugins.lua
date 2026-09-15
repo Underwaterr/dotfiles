@@ -21,5 +21,6 @@ vim.pack.add({
   gh('lifepillar/pgsql.vim'),                       -- PostgreSQL syntax
   gh('vimwiki/vimwiki'),                            -- VimWiki
   gh('lewis6991/gitsigns.nvim'),                    -- git buffer integration
-  --gh('OXY2DEV/markview.nvim'),                      -- rendering markdown
+  --gh('OXY2DEV/markview.nvim'),                    -- rendering markdown
+  gh('MeanderingProgrammer/render-markdown.nvim'),  -- markdown, again
 })
