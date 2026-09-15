@@ -1,7 +1,5 @@
 vim.g.vimwiki_list = {
-  { path = "~/apps/wiki/database/" }, 
-  { path = "~/apps/wiki/morning-pages/" },
-  { path = "~/apps/wiki/story/" }
+  { path = "~/Code/wiki/" }
 }
 
 -- triggered when making a new diary page, `:VimwikiMakeDiaryNote`

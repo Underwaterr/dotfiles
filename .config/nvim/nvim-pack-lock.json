@@ -1,5 +1,9 @@
 {
   "plugins": {
+    "devcontainer-cli.nvim": {
+      "rev": "00b08c1dd2b272b5b56b265de148c38d12ea0597",
+      "src": "https://github.com/erichlf/devcontainer-cli.nvim"
+    },
     "dracula.nvim": {
       "rev": "ae752c13e95fb7c5f58da4b5123cb804ea7568ee",
       "src": "https://github.com/Mofiqul/dracula.nvim"
@@ -39,6 +43,10 @@
     "pgsql.vim": {
       "rev": "16584d7a1f2c528560a646a63625c6731a72c8c7",
       "src": "https://github.com/lifepillar/pgsql.vim"
+    },
+    "toggleterm.nvim": {
+      "rev": "9a88eae817ef395952e08650b3283726786fb5fb",
+      "src": "https://github.com/akinsho/toggleterm.nvim"
     },
     "vimwiki": {
       "rev": "a54a3002e229c4b43d69ced170ff77663a5b2c40",
