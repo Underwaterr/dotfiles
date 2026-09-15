@@ -7,6 +7,7 @@ require('plugins.lualine')      -- status bar
 require('plugins.mason')        -- package manager
 require('plugins.nvim-tree')    -- file explorer
 require('plugins.treesitter')   -- parsing!
+require('plugins.markdown')     -- markdown
 require('plugins.vimwiki')      -- wiki
 require('plugins.devcontainer') -- dev container
 
@@ -23,3 +24,4 @@ require('lsp.vue')
 
 require('diagnostics')
 require('filetypes')
+require('trash')
