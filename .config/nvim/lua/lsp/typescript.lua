@@ -1,7 +1,7 @@
-vim.lsp.config('tsgo', {
-  cmd = { 'tsgo', '--lsp', '--stdio' },
+vim.lsp.config('tsc', {
+  cmd = { 'tsc', '--lsp', '--stdio' },
   filetypes = { 'javascript', 'javascriptreact', 'typescript', 'typescriptreact' },
   root_markers = { 'tsconfig.json', 'jsconfig.json', 'package.json', '.git' },
 })
 
-vim.lsp.enable('tsgo')
+vim.lsp.enable('tsc')

@@ -12,8 +12,9 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true    -- convert tabs to spaces
 
 -- word wrap
-vim.o.wrap = true					-- lines longer than window width will wrap
-vim.o.linebreak = true		-- wrap based on `breakat` characters
+vim.o.wrap = true					  -- lines longer than window width will wrap
+vim.o.linebreak = true		  -- wrap based on `breakat` characters
+vim.opt.breakindent = true  -- soft-wrappped lines inheret indents
 
 -- search case-sensitivity
 vim.o.ignorecase = true   -- ignore case when searching
@@ -36,8 +37,8 @@ vim.opt.spellfile = vim.fn.stdpath("config") .. "/vocabulary.utf-8.add"
 vim.o.spellcapcheck = ""                      -- don't check capitalization
 vim.keymap.set('n', 'sp',  ":set spell!<CR>")  -- 'sp' enables spell check
 vim.keymap.set('n', 'sP',  "1z=")              -- 'sP' tries to fix misspelled word
-vim.keymap.set('n', 'sg',  "zg")               -- 'sg' adds a new "good" word
-vim.keymap.set('n', 'sb',  "zw")               -- 'sb' adds a new "bad" word
+vim.keymap.set('n', 'sg',  "zg")               -- 'sg', "spell good" - adds new "good" word
+vim.keymap.set('n', 'sb',  "zw")               -- 'sb', "spell bad"  - adds new "bad"  word
 vim.keymap.set('n', 'sug', "zug")              -- 'sug' to remove "good" word
 vim.keymap.set('n', 'sub', "zuw")              -- 'sug' to remove "bad" word
 
