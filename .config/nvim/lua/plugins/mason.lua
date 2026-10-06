@@ -13,7 +13,7 @@ require('mason-tool-installer').setup({
     'pug-lsp',
     'terraform-ls',
     'tree-sitter-cli',
-    'tsgo',
+    'tsc',
     'vue-language-server'
   }
 })
