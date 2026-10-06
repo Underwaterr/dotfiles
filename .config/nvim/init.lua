@@ -9,7 +9,7 @@ require('plugins.nvim-tree')    -- file explorer
 require('plugins.treesitter')   -- parsing!
 require('plugins.markdown')     -- markdown
 require('plugins.vimwiki')      -- wiki
-require('plugins.devcontainer') -- dev container
+--require('plugins.devcontainer') -- dev container
 
 require('lsp.antlers')
 require('lsp.astro')
