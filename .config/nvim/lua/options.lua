@@ -79,3 +79,9 @@ vim.keymap.set('n', 'sl', "<C-w>l")            -- go to split right
 vim.keymap.set('n', 'st', ":tabnew<CR>")        -- new tab
 vim.keymap.set('n', '<Tab>', ":tabnext<CR>")   -- go to next tab
 vim.keymap.set('n', '<S-Tab>', ":tabprev<CR>") -- go to previous tab
+
+
+-- experimental wrap
+vim.opt.breakindent = true
+vim.opt.breakindentopt = { "shift:2", "sbr" }
+vim.opt.showbreak = "↪ "
