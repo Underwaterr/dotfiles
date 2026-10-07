@@ -49,8 +49,8 @@ esac
 
 # Mac-specific setup
 if [[ -n "$IS_MACOS" ]]; then
-  HOMEBREW_NO_ENV_HINTS=1
-  HOMEBREW_NO_AUTO_UPDATE=1
+  export HOMEBREW_NO_ENV_HINTS=1
+  export HOMEBREW_NO_AUTO_UPDATE=1
   eval "$(/opt/homebrew/bin/brew shellenv bash)"
 fi
 
@@ -75,8 +75,8 @@ elif [[ -n "$IS_MACOS" ]]; then
 fi
 
 # setup mise if installed
-if command -v mise >/dev/null 2>&1; 
-then eval "$(mise activate bash)"; fi
+if command -v ~/.local/bin/mise >/dev/null 2>&1; 
+then eval "$(~/.local/bin/mise activate bash)"; fi
 
 # Let's get weird!!
 # [[ $- == *i* ]] && [[ -r ~/dictionary.txt ]] && cowsay -f ~/.garf.cow $(shuf -n 1 ~/dictionary.txt) 
